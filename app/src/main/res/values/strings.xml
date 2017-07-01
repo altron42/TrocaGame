@@ -1,0 +1,46 @@
+<resources>
+    <string name="app_name">TrocaGame</string>
+
+    <!-- Strings related to login -->
+    <string name="prompt_email">Email</string>
+    <string name="prompt_password_2">Confirme a senha</string>
+    <string name="prompt_password">Senha</string>
+    <string name="prompt_name">Seu nome</string>
+    <string name="prompt_bio">Escreva algo sobre você</string>
+    <string name="prompt_phone">Seu telefone com DDD</string>
+    <string name="action_sign_in">Entrar</string>
+    <string name="box_remember_me">Lembrar de mim</string>
+    <string name="action_register">Cadastrar-se</string>
+    <string name="action_sign_in_short">Sign in</string>
+    <string name="action_register_long">Nao tem conta? Cria agora!</string>
+    <!-- Error messages -->
+    <string name="error_invalid_email">Este email e invalido</string>
+    <string name="error_invalid_password">Senha muito curta</string>
+    <string name="error_incorrect_login">Email e/ou senha incorretos</string>
+    <string name="error_different_password">Senhas nao combinam</string>
+    <string name="error_field_required">Este campo e obrigatorio</string>
+    <!-- Activities Title Labels -->
+    <string name="title_activity_login">Login | TrocaGame</string>
+
+    <string name="permission_rationale">"Contacts permissions are needed for providing email
+        completions."
+    </string>
+    <string name="title_activity_main">MainActivity</string>
+
+    <string name="title_section1">Section 1</string>
+    <string name="title_section2">Section 2</string>
+    <string name="title_section3">Section 3</string>
+
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+
+    <string name="action_example">Example action</string>
+
+    <string name="action_settings">Settings</string>
+    <string name="title_activity_tela_principal">TelaPrincipal</string>
+    <string name="title_activity_home">Home</string>
+    <string name="title_activity_home_page">HomePage</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+</resources>
