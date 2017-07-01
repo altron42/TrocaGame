@@ -1,0 +1,2 @@
+# TrocaGame
+Aplicativo TrocaGame
