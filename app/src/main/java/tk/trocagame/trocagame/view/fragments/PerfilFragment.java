@@ -48,13 +48,17 @@ public class PerfilFragment extends Fragment {
          * Depois daqui da crash.
          * Provavelmente nao esta conseguindo encontrar a ID do textView
          * Verificar e corrigir os textViews no xml desse fragment
-
-        name = (TextView) rootView.findViewById(R.id.tv_name);
-        name.setText(usuario.getNome());
-        login = (TextView) rootView.findViewById(R.id.tv_login);
-        login.setText(usuario.getLogin());
-
         */
+        name = (TextView) rootView.findViewById(R.id.text_phone);
+        name.setText(usuario.getNome());
+        login = (TextView) rootView.findViewById(R.id.text_login);
+        login.setText(usuario.getLogin());
+        dercricao = (TextView) rootView.findViewById(R.id.text_descricao);
+        dercricao.setText(usuario.getDescricao());
+        telefone = (TextView) rootView.findViewById(R.id.text_phone);
+        telefone.setText(usuario.getTelefone());
+
+
 
         return rootView;
     }
