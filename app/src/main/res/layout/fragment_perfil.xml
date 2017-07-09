@@ -10,20 +10,16 @@
 
     <ImageView
         android:id="@+id/imageView2"
-        android:layout_width="91dp"
-        android:layout_height="92dp"
-        android:layout_marginTop="44dp"
-        app:srcCompat="@drawable/account"
-        android:layout_marginStart="30dp"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentStart="true" />
+        android:layout_width="81dp"
+        android:layout_height="82dp"
+        android:layout_alignStart="@+id/atualiza_form"
+        app:srcCompat="@drawable/account" />
 
     <ScrollView
-        android:id="@+id/login_form"
+        android:id="@+id/atualiza_form"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="27dp"
-        android:layout_below="@+id/imageView2"
+        android:layout_centerVertical="true"
         android:layout_centerHorizontal="true">
 
         <LinearLayout
@@ -49,6 +45,20 @@
 
             <android.support.design.widget.TextInputLayout
                 android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <AutoCompleteTextView
+                    android:id="@+id/text_login"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="@string/prompt_email"
+                    android:inputType="textEmailAddress"
+                    android:maxLines="1" />
+
+            </android.support.design.widget.TextInputLayout>
+
+            <android.support.design.widget.TextInputLayout
+                android:layout_width="match_parent"
                 android:layout_height="match_parent">
 
                 <EditText
@@ -66,20 +76,6 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
 
-                <AutoCompleteTextView
-                    android:id="@+id/text_login"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:hint="@string/prompt_email"
-                    android:inputType="textEmailAddress"
-                    android:maxLines="1" />
-
-            </android.support.design.widget.TextInputLayout>
-
-            <android.support.design.widget.TextInputLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-
                 <EditText
                     android:id="@+id/text_phone"
                     android:layout_width="match_parent"
@@ -89,9 +85,20 @@
                     android:inputType="phone" />
             </android.support.design.widget.TextInputLayout>
 
+            <android.support.design.widget.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <EditText
+                    android:id="@+id/text_password"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:ems="10"
+                    android:inputType="textPassword" />
+            </android.support.design.widget.TextInputLayout>
+
             <Button
-                android:id="@+id/email_sign_in_button"
-                style="?android:textAppearanceSmall"
+                android:id="@+id/update_data_user_button"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
