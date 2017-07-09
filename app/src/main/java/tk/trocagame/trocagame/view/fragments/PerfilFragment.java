@@ -15,6 +15,9 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
+
+import java.util.List;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -25,6 +28,7 @@ import tk.trocagame.trocagame.api.ApiUtils;
 import tk.trocagame.trocagame.model.ResultStatus;
 import tk.trocagame.trocagame.model.Usuario;
 import tk.trocagame.trocagame.utils.LocalStorage;
+import tk.trocagame.trocagame.view.LoginActivity;
 import tk.trocagame.trocagame.view.RegisterActivity;
 
 
@@ -33,12 +37,6 @@ public class PerfilFragment extends Fragment {
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String TAG = RegisterActivity.class.getName();
     private ApiService mApiService;
-
-    private String name;
-    private String email;
-    private String dercricao;
-    private String phone;
-    private String password;
 
     private EditText mNameView;
     private EditText mEmailView;
@@ -147,6 +145,17 @@ public class PerfilFragment extends Fragment {
             cancel = true;
         }
 
+        // Check for descricao field.
+        if (TextUtils.isEmpty(bio)) {
+            mBioView.setError(getString(R.string.error_field_required));
+            focusView = mBioView;
+            cancel = true;
+        } else if (!isNameValid(bio)) {
+            mBioView.setError(getString(R.string.error_invalid_email));
+            focusView = mBioView;
+            cancel = true;
+        }
+
         if (cancel) {
             // There was an error; don't attempt login and focus the first
             // form field with an error.
@@ -155,7 +164,7 @@ public class PerfilFragment extends Fragment {
             // Show a progress spinner, and kick off a background task to
             // perform the user login attempt.
             // showProgress(true);
-            cadastraUsuario(new Usuario(0,email,nome,password,bio,usuario.getData(),phone));
+            cadastraUsuario(new Usuario(usuario.getId(),email,nome,password,bio,usuario.getData(),phone));
         }
     }
 
@@ -178,32 +187,33 @@ public class PerfilFragment extends Fragment {
     }
 
     private void cadastraUsuario(Usuario usuario) {
-        Call<ResultStatus> call = mApiService.novoUsuario(usuario);
+        Call<ResultStatus> call = mApiService.updateUsuario(usuario);
 
         call.enqueue(new Callback<ResultStatus>() {
             @Override
             public void onResponse(Call<ResultStatus> call, Response<ResultStatus> response) {
                 Log.i(TAG,"CADASTRO ENVIADO. " + response.body());
                 if (response.body().getStatus()) {
-                    Log.i(TAG,"Cadastrado com sucesso. " + response.body().toString());
+//                    Log.i(TAG,"Cadastrado com sucesso. " + response.body().toString());
+                    Toast.makeText(getActivity(),"Dados Atualizados com sucesso!",Toast.LENGTH_SHORT).show();
                     terminateActivity();
                 } else {
                     Log.i(TAG,"Usuario ja existe. " + response.body().toString());
-                    mEmailView.setError("Usuario ja existe");
-                    mEmailView.requestFocus();
+                    Toast.makeText(getActivity(),"Erro ao atualizar, Verifique sua conexão",Toast.LENGTH_SHORT).show();
                 }
             }
 
             @Override
             public void onFailure(Call<ResultStatus> call, Throwable t) {
                 Log.e(TAG, "Ocorreu algum erro. " + t.getMessage());
+                Toast.makeText(getActivity(),"Erro ao atualizar, Verifique sua conexão",Toast.LENGTH_SHORT).show();
             }
         });
 
     }
 
     private void terminateActivity() {
-        this.terminateActivity();
+//        this.terminateActivity();
     }
 
 }
