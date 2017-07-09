@@ -34,5 +34,9 @@ public interface ApiService {
     @Headers( "Content-Type: application/json" )
     @POST("usuario/cadastra_usuario")
     Call<ResultStatus> novoUsuario(@Body Usuario usuario);
+
+    @Headers( "Content-Type: application/json" )
+    @POST("usuario/altera_usuario")
+    Call<ResultStatus> updateUsuario(@Body Usuario usuario);
     
 }
