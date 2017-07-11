@@ -56,6 +56,7 @@ public class InicioFragment extends Fragment {
 
     /*
      * Adicionar as outras fragments aqui
+     * Atentar aos parametros passados ao instanciar novos fragments
      */
     private void setupViewPager(ViewPager viewPager) {
         SectionsPagerAdapter adapter = new SectionsPagerAdapter(
