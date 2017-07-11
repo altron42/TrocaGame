@@ -60,12 +60,12 @@ public class InicioFragment extends Fragment {
     private void setupViewPager(ViewPager viewPager) {
         SectionsPagerAdapter adapter = new SectionsPagerAdapter(
                 ((AppCompatActivity)getActivity()).getSupportFragmentManager());
-        adapter.addFragment(new PS3Fragment(), "PS3");
-        adapter.addFragment(new PS4Fragment(), "PS4");
-        adapter.addFragment(new XboxFragment(), "XBOX 360");
-        adapter.addFragment(new XBoxOneFragment(), "XBOX One");
-        adapter.addFragment(new WiiFragment(), "WII");
-        adapter.addFragment(new SwitchFragment(), "Switch");
+        adapter.addFragment(new ConsoleInicioFragment().newInstance("PS3, guei"), "PS3");
+        adapter.addFragment(new ConsoleInicioFragment().newInstance("PS4"), "PS4");
+        adapter.addFragment(new ConsoleInicioFragment().newInstance("XBOX 360"), "XBOX 360");
+        adapter.addFragment(new ConsoleInicioFragment().newInstance("XBOX One"), "XBOX One");
+        adapter.addFragment(new ConsoleInicioFragment().newInstance("WII"), "WII");
+        adapter.addFragment(new ConsoleInicioFragment().newInstance("Nintendo Switch"), "Switch");
 
         viewPager.setAdapter(adapter);
     }

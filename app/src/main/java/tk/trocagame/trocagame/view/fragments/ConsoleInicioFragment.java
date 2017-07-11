@@ -1,36 +1,34 @@
 package tk.trocagame.trocagame.view.fragments;
 
-import android.content.Context;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 import tk.trocagame.trocagame.R;
 
 /**
  * A simple {@link Fragment} subclass.
  * Activities that contain this fragment must implement the
- * {@link PS4Fragment.OnFragmentInteractionListener} interface
+ * {@link ConsoleInicioFragment.OnFragmentInteractionListener} interface
  * to handle interaction events.
- * Use the {@link PS4Fragment#newInstance} factory method to
+ * Use the {@link ConsoleInicioFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class PS4Fragment extends Fragment {
+public class ConsoleInicioFragment extends Fragment {
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-    private static final String ARG_PARAM1 = "param1";
-    private static final String ARG_PARAM2 = "param2";
+    private static final String ARG_CONSOLE = "tk.trocagame.view.fragment.CONSOLE";
 
     // TODO: Rename and change types of parameters
-    private String mParam1;
-    private String mParam2;
+    private String mConsoleName;
 
     private OnFragmentInteractionListener mListener;
 
-    public PS4Fragment() {
+    public ConsoleInicioFragment() {
         // Required empty public constructor
     }
 
@@ -38,16 +36,14 @@ public class PS4Fragment extends Fragment {
      * Use this factory method to create a new instance of
      * this fragment using the provided parameters.
      *
-     * @param param1 Parameter 1.
-     * @param param2 Parameter 2.
-     * @return A new instance of fragment PS4Fragment.
+     * @param consoleName Name for this console fragment.
+     * @return A new instance of fragment ConsoleInicioFragment.
      */
     // TODO: Rename and change types and number of parameters
-    public static PS4Fragment newInstance(String param1, String param2) {
-        PS4Fragment fragment = new PS4Fragment();
+    public static ConsoleInicioFragment newInstance(String consoleName) {
+        ConsoleInicioFragment fragment = new ConsoleInicioFragment();
         Bundle args = new Bundle();
-        args.putString(ARG_PARAM1, param1);
-        args.putString(ARG_PARAM2, param2);
+        args.putString(ARG_CONSOLE, consoleName);
         fragment.setArguments(args);
         return fragment;
     }
@@ -56,8 +52,7 @@ public class PS4Fragment extends Fragment {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         if (getArguments() != null) {
-            mParam1 = getArguments().getString(ARG_PARAM1);
-            mParam2 = getArguments().getString(ARG_PARAM2);
+            mConsoleName = getArguments().getString(ARG_CONSOLE);
         }
     }
 
@@ -65,7 +60,13 @@ public class PS4Fragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_ps4, container, false);
+        View rootView = inflater.inflate(R.layout.fragment_console_inicio, container, false);
+
+        TextView tvConsoleName = (TextView) rootView.findViewById(R.id.tv_console_name);
+
+        tvConsoleName.setText(mConsoleName);
+
+        return rootView;
     }
 
     // TODO: Rename method, update argument and hook method into UI event
