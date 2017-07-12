@@ -19,14 +19,15 @@ import tk.trocagame.trocagame.R;
  * create an instance of this fragment.
  */
 public class ConsoleInicioFragment extends Fragment {
-    // TODO: Rename parameter arguments, choose names that match
-    // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
+
+    // parametros para inicializacao do fragment
     private static final String ARG_CONSOLE = "tk.trocagame.view.fragment.CONSOLE";
 
-    // TODO: Rename and change types of parameters
     private String mConsoleName;
 
     private OnFragmentInteractionListener mListener;
+
+    private TextView tvConsoleName;
 
     public ConsoleInicioFragment() {
         // Required empty public constructor
@@ -62,8 +63,7 @@ public class ConsoleInicioFragment extends Fragment {
         // Inflate the layout for this fragment
         View rootView = inflater.inflate(R.layout.fragment_console_inicio, container, false);
 
-        TextView tvConsoleName = (TextView) rootView.findViewById(R.id.tv_console_name);
-
+        tvConsoleName = (TextView) rootView.findViewById(R.id.tv_console_name);
         tvConsoleName.setText(mConsoleName);
 
         return rootView;
