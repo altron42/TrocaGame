@@ -3,7 +3,8 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
-    android:orientation="vertical" >
+    android:orientation="vertical"
+    android:layout_gravity="center_horizontal">
 
     <LinearLayout
         android:layout_width="wrap_content"
@@ -16,8 +17,8 @@
             android:layout_width="128dp"
             android:layout_height="147dp"
             android:layout_marginTop="@dimen/activity_vertical_margin"
-            android:layout_marginLeft="@dimen/activity_horizontal_margin"
-            android:layout_marginRight="@dimen/activity_horizontal_margin"
+            android:layout_marginLeft="@dimen/card_console_game_horizontal_margin"
+            android:layout_marginRight="@dimen/card_console_game_horizontal_margin"
             app:srcCompat="@drawable/battlefield1_ps4" />
 
         <TextView
