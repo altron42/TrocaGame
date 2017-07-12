@@ -2,8 +2,9 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
-    tools:context="tk.trocagame.trocagame.view.fragments.ConsoleInicioFragment" >
+    tools:context="tk.trocagame.trocagame.view.fragments.ConsoleInicioFragment">
 
     <ScrollView
         android:layout_width="match_parent"
@@ -11,15 +12,16 @@
 
         <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center">
+            android:layout_height="match_parent" >
 
-            <TextView
-                android:id="@+id/tv_console_name"
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/rv_console_inicio_1"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:gravity="center_horizontal"
-                android:text="@string/hello_blank_fragment" />
+                android:layout_height="wrap_content"
+                tools:orientation="horizontal"
+                app:layoutManager="android.support.v7.widget.LinearLayoutManager"
+                tools:context=".view.fragment.ConsoleInicioFragment"
+                tools:listitem="@layout/card_console_game"/>
 
         </RelativeLayout>
 
