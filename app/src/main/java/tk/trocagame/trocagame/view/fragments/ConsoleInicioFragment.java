@@ -51,9 +51,6 @@ public class ConsoleInicioFragment extends Fragment {
 
     private static final String TAG = ConsoleInicioFragment.class.getName();
 
-    private TextView tvConsoleName;
-    private Button bt_abrir_jogo;
-
     private List<Jogo> gameList = new ArrayList<>();
     private RecyclerView recyclerView;
     private GameRecyclerAdapter mAdapter;
@@ -101,15 +98,6 @@ public class ConsoleInicioFragment extends Fragment {
         recyclerView.setLayoutManager(mLayoutManager);
         recyclerView.setItemAnimator(new DefaultItemAnimator());
         recyclerView.setAdapter(mAdapter);
-
-        bt_abrir_jogo = (Button) rootView.findViewById(R.id.bt_abrir_jogo);
-        bt_abrir_jogo.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Log.i(TAG,gameList.get(0).toString());
-                //openGameActivity(gameList.get(1));
-            }
-        });
 
         return rootView;
     }
