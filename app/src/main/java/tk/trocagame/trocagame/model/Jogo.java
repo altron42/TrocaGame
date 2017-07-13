@@ -113,4 +113,19 @@ public class Jogo {
     public Uri getImageUri() {
         return Uri.parse(src_imagem);
     }
+
+    @Override
+    public String toString() {
+        return "Jogo{" +
+                "id=" + id +
+                ", nome='" + nome + '\'' +
+                ", console=" + console +
+                ", descricao='" + descricao + '\'' +
+                ", ano_lancamento='" + ano_lancamento + '\'' +
+                ", distribuidor='" + distribuidor + '\'' +
+                ", produtor='" + produtor + '\'' +
+                ", genero='" + genero + '\'' +
+                ", src_imagem='" + src_imagem + '\'' +
+                '}';
+    }
 }

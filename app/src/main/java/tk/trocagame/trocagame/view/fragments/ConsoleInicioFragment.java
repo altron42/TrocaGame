@@ -1,20 +1,34 @@
 package tk.trocagame.trocagame.view.fragments;
 
+import android.content.Context;
+import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v7.widget.DefaultItemAnimator;
+import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.List;
 
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 import tk.trocagame.trocagame.R;
+import tk.trocagame.trocagame.api.ApiService;
+import tk.trocagame.trocagame.api.ApiUtils;
 import tk.trocagame.trocagame.model.Jogo;
 import tk.trocagame.trocagame.utils.GameRecyclerAdapter;
+import tk.trocagame.trocagame.utils.LocalStorage;
+import tk.trocagame.trocagame.view.JogoActivity;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -33,7 +47,12 @@ public class ConsoleInicioFragment extends Fragment {
 
     private OnFragmentInteractionListener mListener;
 
+    private ApiService mApiService;
+
+    private static final String TAG = ConsoleInicioFragment.class.getName();
+
     private TextView tvConsoleName;
+    private Button bt_abrir_jogo;
 
     private List<Jogo> gameList = new ArrayList<>();
     private RecyclerView recyclerView;
@@ -70,11 +89,27 @@ public class ConsoleInicioFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
+        mApiService = ApiUtils.getApiService();
+        buscaJogos();
         // Inflate the layout for this fragment
         View rootView = inflater.inflate(R.layout.fragment_console_inicio, container, false);
 
-        //tvConsoleName = (TextView) rootView.findViewById(R.id.tv_console_name);
-        //tvConsoleName.setText(mConsoleName);
+        recyclerView = (RecyclerView) rootView.findViewById(R.id.rv_console_inicio_1);
+        mAdapter = new GameRecyclerAdapter(gameList);
+        RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(rootView.getContext(),
+                LinearLayoutManager.HORIZONTAL, false);
+        recyclerView.setLayoutManager(mLayoutManager);
+        recyclerView.setItemAnimator(new DefaultItemAnimator());
+        recyclerView.setAdapter(mAdapter);
+
+        bt_abrir_jogo = (Button) rootView.findViewById(R.id.bt_abrir_jogo);
+        bt_abrir_jogo.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Log.i(TAG,gameList.get(0).toString());
+                //openGameActivity(gameList.get(1));
+            }
+        });
 
         return rootView;
     }
@@ -86,7 +121,7 @@ public class ConsoleInicioFragment extends Fragment {
         }
     }
 
-    /*
+/*
     @Override
     public void onAttach(Context context) {
         super.onAttach(context);
@@ -97,7 +132,7 @@ public class ConsoleInicioFragment extends Fragment {
                     + " must implement OnFragmentInteractionListener");
         }
     }
-    */
+*/
 
     @Override
     public void onDetach() {
@@ -118,5 +153,29 @@ public class ConsoleInicioFragment extends Fragment {
     public interface OnFragmentInteractionListener {
         // TODO: Update argument type and name
         void onFragmentInteraction(Uri uri);
+    }
+
+    public void buscaJogos() {
+        mApiService.buscaAllJogos().enqueue(new Callback<List<Jogo>>() {
+            @Override
+            public void onResponse(Call<List<Jogo>> call, Response<List<Jogo>> response) {
+                if(response.isSuccessful()) {
+
+                    Log.i(TAG,"GET enviado para API.");
+                    if (response.body().isEmpty()) {
+                        Toast.makeText(getActivity(),"Erro, retorno vazio",Toast.LENGTH_SHORT).show();
+                    } else {
+                        gameList = response.body();
+                    }
+                } else {
+                    Log.e(TAG, "RESPONSE ERROR CODE: " + response.code() + response.raw());
+                }
+            }
+
+            @Override
+            public void onFailure(Call<List<Jogo>> call, Throwable t) {
+                Log.e(TAG, "Ocorreu algum erro. " + t.getMessage());
+            }
+        });
     }
 }

@@ -6,8 +6,10 @@ import retrofit2.Call;
 import retrofit2.http.Body;
 import retrofit2.http.Field;
 import retrofit2.http.FormUrlEncoded;
+import retrofit2.http.GET;
 import retrofit2.http.Headers;
 import retrofit2.http.POST;
+import tk.trocagame.trocagame.model.Jogo;
 import tk.trocagame.trocagame.model.ResultStatus;
 import tk.trocagame.trocagame.model.Usuario;
 
@@ -38,5 +40,8 @@ public interface ApiService {
     @Headers( "Content-Type: application/json" )
     @POST("usuario/altera_usuario")
     Call<ResultStatus> updateUsuario(@Body Usuario usuario);
+
+    @GET("jogo/busca_all_jogos")
+    Call<List<Jogo>> buscaAllJogos();
     
 }

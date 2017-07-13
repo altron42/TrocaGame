@@ -18,6 +18,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import tk.trocagame.trocagame.R;
+import tk.trocagame.trocagame.utils.Console;
 
 
 public class InicioFragment extends Fragment {
@@ -61,12 +62,12 @@ public class InicioFragment extends Fragment {
     private void setupViewPager(ViewPager viewPager) {
         SectionsPagerAdapter adapter = new SectionsPagerAdapter(
                 ((AppCompatActivity)getActivity()).getSupportFragmentManager());
-        adapter.addFragment(new ConsoleInicioFragment().newInstance("PS3, guei"), "PS3");
-        adapter.addFragment(new ConsoleInicioFragment().newInstance("PS4"), "PS4");
-        adapter.addFragment(new ConsoleInicioFragment().newInstance("XBOX 360"), "XBOX 360");
-        adapter.addFragment(new ConsoleInicioFragment().newInstance("XBOX One"), "XBOX One");
-        adapter.addFragment(new ConsoleInicioFragment().newInstance("WII"), "WII");
-        adapter.addFragment(new ConsoleInicioFragment().newInstance("Nintendo Switch"), "Switch");
+        adapter.addFragment(new ConsoleInicioFragment().newInstance(Console.PS3), "PS3");
+        adapter.addFragment(new ConsoleInicioFragment().newInstance(Console.PS4), "PS4");
+        adapter.addFragment(new ConsoleInicioFragment().newInstance(Console.XBOX360), "XBOX 360");
+        adapter.addFragment(new ConsoleInicioFragment().newInstance(Console.XBOXONE), "XBOX One");
+        adapter.addFragment(new ConsoleInicioFragment().newInstance(Console.WII), "WII");
+        adapter.addFragment(new ConsoleInicioFragment().newInstance(Console.SWITCH), "Switch");
 
         viewPager.setAdapter(adapter);
     }

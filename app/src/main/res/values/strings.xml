@@ -46,6 +46,7 @@
 
     <!--Strings related to Perfil-->
     <string name="action_atualizar_dados">Atualizar</string>
+    <string name="title_activity_jogo">JogoActivity</string>
 
 
 </resources>
