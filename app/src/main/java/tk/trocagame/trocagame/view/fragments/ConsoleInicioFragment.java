@@ -95,6 +95,7 @@ public class ConsoleInicioFragment extends Fragment {
         mAdapter = new GameRecyclerAdapter(gameList);
         RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(rootView.getContext(),
                 LinearLayoutManager.HORIZONTAL, false);
+        recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(mLayoutManager);
         recyclerView.setItemAnimator(new DefaultItemAnimator());
         recyclerView.setAdapter(mAdapter);
