@@ -12,6 +12,8 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.bumptech.glide.Glide;
+
 import java.util.List;
 
 import tk.trocagame.trocagame.R;
@@ -58,7 +60,10 @@ public class GameRecyclerAdapter extends RecyclerView.Adapter<GameRecyclerAdapte
     public void onBindViewHolder(MyViewHolder holder, final int position) {
         Jogo game = gameList.get(position);
         holder.gameName.setText(game.getNome());
-        holder.gameImage.setImageURI(game.getImageUri());
+        //holder.gameImage.setImageURI(game.getImageUri());
+        Glide.with(context)
+                .load(game.getSrc_imagem())
+                .into(holder.gameImage);
         holder.gameCard.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -68,7 +73,6 @@ public class GameRecyclerAdapter extends RecyclerView.Adapter<GameRecyclerAdapte
                 openGameActivity(jogo);
             }
         });
-        //holder.gameImage.setImageResource(R.drawable.battlefield1_ps4);
     }
 
     @Override
