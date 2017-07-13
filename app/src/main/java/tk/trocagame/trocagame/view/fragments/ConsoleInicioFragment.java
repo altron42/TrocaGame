@@ -3,12 +3,18 @@ package tk.trocagame.trocagame.view.fragments;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import tk.trocagame.trocagame.R;
+import tk.trocagame.trocagame.model.Jogo;
+import tk.trocagame.trocagame.utils.GameRecyclerAdapter;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -21,13 +27,17 @@ import tk.trocagame.trocagame.R;
 public class ConsoleInicioFragment extends Fragment {
 
     // parametros para inicializacao do fragment
-    private static final String ARG_CONSOLE = "tk.trocagame.view.fragment.CONSOLE";
+    private static final String ARG_CONSOLE_ID = "tk.trocagame.id.CONSOLE";
 
-    private String mConsoleName;
+    private int mConsoleId;
 
     private OnFragmentInteractionListener mListener;
 
     private TextView tvConsoleName;
+
+    private List<Jogo> gameList = new ArrayList<>();
+    private RecyclerView recyclerView;
+    private GameRecyclerAdapter mAdapter;
 
     public ConsoleInicioFragment() {
         // Required empty public constructor
@@ -37,14 +47,14 @@ public class ConsoleInicioFragment extends Fragment {
      * Use this factory method to create a new instance of
      * this fragment using the provided parameters.
      *
-     * @param consoleName Name for this console fragment.
+     * @param consoleId Name for this console fragment.
      * @return A new instance of fragment ConsoleInicioFragment.
      */
     // TODO: Rename and change types and number of parameters
-    public static ConsoleInicioFragment newInstance(String consoleName) {
+    public static ConsoleInicioFragment newInstance(int consoleId) {
         ConsoleInicioFragment fragment = new ConsoleInicioFragment();
         Bundle args = new Bundle();
-        args.putString(ARG_CONSOLE, consoleName);
+        args.putInt(ARG_CONSOLE_ID, consoleId);
         fragment.setArguments(args);
         return fragment;
     }
@@ -53,7 +63,7 @@ public class ConsoleInicioFragment extends Fragment {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         if (getArguments() != null) {
-            mConsoleName = getArguments().getString(ARG_CONSOLE);
+            mConsoleId = getArguments().getInt(ARG_CONSOLE_ID);
         }
     }
 
@@ -63,8 +73,8 @@ public class ConsoleInicioFragment extends Fragment {
         // Inflate the layout for this fragment
         View rootView = inflater.inflate(R.layout.fragment_console_inicio, container, false);
 
-        tvConsoleName = (TextView) rootView.findViewById(R.id.tv_console_name);
-        tvConsoleName.setText(mConsoleName);
+        //tvConsoleName = (TextView) rootView.findViewById(R.id.tv_console_name);
+        //tvConsoleName.setText(mConsoleName);
 
         return rootView;
     }
