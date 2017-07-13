@@ -1,5 +1,7 @@
 package tk.trocagame.trocagame.model;
 
+import android.net.Uri;
+
 /**
  * Created by micael on 6/18/17.
  */
@@ -106,5 +108,24 @@ public class Jogo {
 
     public void setSrc_imagem(String src_imagem) {
         this.src_imagem = src_imagem;
+    }
+
+    public Uri getImageUri() {
+        return Uri.parse(src_imagem);
+    }
+
+    @Override
+    public String toString() {
+        return "Jogo{" +
+                "id=" + id +
+                ", nome='" + nome + '\'' +
+                ", console=" + console +
+                ", descricao='" + descricao + '\'' +
+                ", ano_lancamento='" + ano_lancamento + '\'' +
+                ", distribuidor='" + distribuidor + '\'' +
+                ", produtor='" + produtor + '\'' +
+                ", genero='" + genero + '\'' +
+                ", src_imagem='" + src_imagem + '\'' +
+                '}';
     }
 }

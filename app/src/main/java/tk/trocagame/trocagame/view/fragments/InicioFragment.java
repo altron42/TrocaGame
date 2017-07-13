@@ -14,16 +14,18 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import tk.trocagame.trocagame.R;
+import tk.trocagame.trocagame.utils.Console;
 
 
-/**
- * A simple {@link Fragment} subclass.
- */
 public class InicioFragment extends Fragment {
 
+    private Toolbar toolbar;
     private ViewPager mViewPager;
-    private SectionsPagerAdapter mSectionsPagerAdapter;
+    private TabLayout tabLayout;
 
 
     @Override
@@ -37,22 +39,44 @@ public class InicioFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View rootView = inflater.inflate(R.layout.fragment_inicio,container, false);
-        Toolbar toolbar =(Toolbar)rootView.findViewById(R.id.toolbar);
+
+        toolbar = (Toolbar) rootView.findViewById(R.id.toolbar);
         ((AppCompatActivity)getActivity()).setSupportActionBar(toolbar);
-        mSectionsPagerAdapter= new SectionsPagerAdapter(((AppCompatActivity)getActivity()).getSupportFragmentManager());
 
-        mViewPager =(ViewPager)rootView.findViewById(R.id.container);
-        mViewPager.setAdapter(mSectionsPagerAdapter);
-        TabLayout tabLayout= (TabLayout)rootView.findViewById(R.id.tabs);
+        //((AppCompatActivity)getActivity()).getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
+        mViewPager = (ViewPager) rootView.findViewById(R.id.container);
+        setupViewPager(mViewPager);
+
+        tabLayout = (TabLayout) rootView.findViewById(R.id.tabs);
         tabLayout.setupWithViewPager(mViewPager);
-
-
+        tabLayout.setTabMode(TabLayout.MODE_SCROLLABLE);
 
         return rootView;
     }
 
+    /*
+     * Adicionar as outras fragments aqui
+     * Atentar aos parametros passados ao instanciar novos fragments
+     */
+    private void setupViewPager(ViewPager viewPager) {
+        SectionsPagerAdapter adapter = new SectionsPagerAdapter(
+                ((AppCompatActivity)getActivity()).getSupportFragmentManager());
+        adapter.addFragment(new ConsoleInicioFragment().newInstance(Console.PS3), "PS3");
+        adapter.addFragment(new ConsoleInicioFragment().newInstance(Console.PS4), "PS4");
+        adapter.addFragment(new ConsoleInicioFragment().newInstance(Console.XBOX360), "XBOX 360");
+        adapter.addFragment(new ConsoleInicioFragment().newInstance(Console.XBOXONE), "XBOX One");
+        adapter.addFragment(new ConsoleInicioFragment().newInstance(Console.WII), "WII");
+        adapter.addFragment(new ConsoleInicioFragment().newInstance(Console.SWITCH), "Switch");
+
+        viewPager.setAdapter(adapter);
+    }
+
 
     public class SectionsPagerAdapter extends FragmentPagerAdapter {
+
+        private final List<Fragment> mFragmentList = new ArrayList<>();
+        private final List<String> mFragmentTitleList = new ArrayList<>();
 
         public SectionsPagerAdapter(FragmentManager fm) {
             super(fm);
@@ -60,39 +84,22 @@ public class InicioFragment extends Fragment {
 
         @Override
         public Fragment getItem(int position) {
-            switch (position){
-                case 0:
-                    PS3Fragment tab1= new PS3Fragment();
-                    return tab1;
-                case 1:
-                    XboxFragment tab2 = new XboxFragment();
-                    return tab2;
-                case 2:
-                    WiiFragment tab3= new WiiFragment() ;
-                    return tab3;
-                default:
-                    return null;
-
-            }
+            return mFragmentList.get(position);
         }
 
         @Override
         public int getCount() {
-            // Show 3 total pages.
-            return 3;
+            return mFragmentList.size();
+        }
+
+        public void addFragment(Fragment fragment, String title) {
+            mFragmentList.add(fragment);
+            mFragmentTitleList.add(title);
         }
 
         @Override
         public CharSequence getPageTitle(int position) {
-            switch (position) {
-                case 0:
-                    return "PS3";
-                case 1:
-                    return "XBOX";
-                case 2:
-                    return "WII";
-            }
-            return null;
+            return mFragmentTitleList.get(position);
         }
     }
 }

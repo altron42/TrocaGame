@@ -8,19 +8,15 @@ import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import org.w3c.dom.Text;
-
 import tk.trocagame.trocagame.R;
 import tk.trocagame.trocagame.model.Usuario;
 import tk.trocagame.trocagame.utils.LocalStorage;
-import tk.trocagame.trocagame.view.fragments.Inicio2Fragment;
 import tk.trocagame.trocagame.view.fragments.InicioFragment;
 import tk.trocagame.trocagame.view.fragments.PerfilFragment;
 import tk.trocagame.trocagame.view.fragments.TrocaFragment;

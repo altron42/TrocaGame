@@ -18,7 +18,8 @@ public class LocalStorage {
 
     private static final String SETTINGS = "settings";
 
-    public static final String ACTIVE_USER = "user";
+    public static final String ACTIVE_USER = "tk.trocagame.localstorage.ACTIVE_USER";
+    public static final String JOGO_CLICADO = "tk.trocagame.localstorage.JOGO_CLICADO";
 
     public static LocalStorage localStorage;
 
