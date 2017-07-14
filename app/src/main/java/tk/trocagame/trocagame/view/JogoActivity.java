@@ -8,6 +8,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
@@ -23,7 +24,9 @@ public class JogoActivity extends Activity {
 
     private Jogo jogo;
     private ImageView capa_jogo;
-    private EditText titulo;
+    private TextView titulo;
+    private TextView descricao;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,16 +36,17 @@ public class JogoActivity extends Activity {
         jogo = LocalStorage.getInstance(this).getObject(LocalStorage.JOGO_CLICADO,Jogo.class);
 
         capa_jogo = (ImageView) findViewById(R.id.view_image_game);
-        titulo = (Tex) findViewById(R.id.text_title);
+        titulo = (TextView) findViewById(R.id.text_title);
+        descricao = (TextView) findViewById(R.id.text_description);
+        titulo.setText(jogo.getNome());
+        descricao.setText(jogo.getDescricao());
+
 
         Glide.with(this)
                 .load(jogo.getImageUri())
                 .into(capa_jogo);
 
-        titulo.setText(jogo.getNome());
-        titulo.setKeyListener(null);
-
-        Toast.makeText(this, jogo.getDescricao(),Toast.LENGTH_SHORT).show();
+//        Toast.makeText(this, jogo.getDescricao(),Toast.LENGTH_SHORT).show();
     }
 
 }
