@@ -26,6 +26,11 @@ public class JogoActivity extends Activity {
     private ImageView capa_jogo;
     private TextView titulo;
     private TextView descricao;
+    private TextView genero;
+    private TextView ano_lancamento;
+    private TextView produtor;
+    private TextView distribuidor;
+
 
 
     @Override
@@ -40,6 +45,14 @@ public class JogoActivity extends Activity {
         descricao = (TextView) findViewById(R.id.text_description);
         titulo.setText(jogo.getNome());
         descricao.setText(jogo.getDescricao());
+        genero = (TextView) findViewById(R.id.text_ano_lancamento);
+        genero.setText("Gênero: " + jogo.getGenero());
+        ano_lancamento = (TextView) findViewById(R.id.text_ano_lancamento);
+        ano_lancamento.setText("Ano Lançamento: "+jogo.getAno_lancamento());
+        produtor = (TextView) findViewById(R.id.text_produtor);
+        produtor.setText("Produtor: "+jogo.getProdutor());
+        distribuidor = (TextView) findViewById(R.id.text_distribuidor);
+        distribuidor.setText("Distribuidor: "+jogo.getDistribuidor());
 
 
         Glide.with(this)
