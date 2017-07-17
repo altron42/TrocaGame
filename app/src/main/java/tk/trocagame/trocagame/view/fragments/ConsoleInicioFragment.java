@@ -25,6 +25,7 @@ import retrofit2.Response;
 import tk.trocagame.trocagame.R;
 import tk.trocagame.trocagame.api.ApiService;
 import tk.trocagame.trocagame.api.ApiUtils;
+import tk.trocagame.trocagame.model.Console;
 import tk.trocagame.trocagame.model.Jogo;
 import tk.trocagame.trocagame.utils.GameRecyclerAdapter;
 import tk.trocagame.trocagame.utils.LocalStorage;
@@ -145,7 +146,7 @@ public class ConsoleInicioFragment extends Fragment {
     }
 
     public void buscaJogos() {
-        mApiService.buscaAllJogos().enqueue(new Callback<List<Jogo>>() {
+        mApiService.buscaJogosConsole(new Console(mConsoleId)).enqueue(new Callback<List<Jogo>>() {
             @Override
             public void onResponse(Call<List<Jogo>> call, Response<List<Jogo>> response) {
                 if(response.isSuccessful()) {

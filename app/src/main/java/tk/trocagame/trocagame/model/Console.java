@@ -1,4 +1,4 @@
-package tk.trocagame.trocagame.utils;
+package tk.trocagame.trocagame.model;
 
 /**
  * Created by micael on 7/12/17.
@@ -11,6 +11,11 @@ public class Console {
     public static final int XBOXONE = 4;
     public static final int WII = 5;
     public static final int SWITCH = 6;
+
+    public static final String ID = "id";
+    public static final String NOME_CONSOLE = "nome_console";
+    public static final String ANO_LANCAMENTO = "ano_lancamento";
+    public static final String DESCRICAO = "descricao";
 
     private int id;
     private String nome_console;
