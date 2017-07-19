@@ -29,10 +29,13 @@
         <activity
             android:name=".view.TelaPrincipal"
             android:label="@string/app_name"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".view.JogoActivity"
-            android:label="@string/title_activity_jogo"></activity>
+            android:label="@string/title_activity_jogo" />
+        <activity
+            android:name=".view.TrocaActivity"
+            android:label="@string/title_activity_troca"></activity>
     </application>
 
 </manifest>

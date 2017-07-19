@@ -14,7 +14,7 @@ import tk.trocagame.trocagame.R;
 /**
  * A simple {@link Fragment} subclass.
  */
-public class TrocaFragment extends Fragment {
+public class TrocasFragment extends Fragment {
 
 
 
@@ -29,7 +29,7 @@ public class TrocaFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_troca, container, false);
+        return inflater.inflate(R.layout.fragment_trocas, container, false);
     }
 
 }

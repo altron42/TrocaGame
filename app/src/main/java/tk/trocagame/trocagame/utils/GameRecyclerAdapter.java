@@ -68,7 +68,7 @@ public class GameRecyclerAdapter extends RecyclerView.Adapter<GameRecyclerAdapte
             @Override
             public void onClick(View v) {
                 Jogo jogo = gameList.get(position);
-                Toast.makeText(context, "Jogo clicado: " + jogo.getNome(),Toast.LENGTH_SHORT).show();
+//                Toast.makeText(context, "Jogo clicado: " + jogo.getNome(),Toast.LENGTH_SHORT).show();
                 Log.i(TAG,"Jogo clicado: " + jogo.getId() + "-" + jogo.getNome());
                 openGameActivity(jogo);
             }
