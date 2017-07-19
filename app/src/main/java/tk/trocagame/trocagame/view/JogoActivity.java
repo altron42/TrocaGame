@@ -45,14 +45,14 @@ public class JogoActivity extends Activity {
         descricao = (TextView) findViewById(R.id.text_description);
         titulo.setText(jogo.getNome());
         descricao.setText(jogo.getDescricao());
-        genero = (TextView) findViewById(R.id.text_ano_lancamento);
-        genero.setText("Gênero: " + jogo.getGenero());
+        genero = (TextView) findViewById(R.id.text_genero);
+        genero.setText(jogo.getGenero());
         ano_lancamento = (TextView) findViewById(R.id.text_ano_lancamento);
-        ano_lancamento.setText("Ano Lançamento: "+jogo.getAno_lancamento());
+        ano_lancamento.setText(jogo.getAno_lancamento());
         produtor = (TextView) findViewById(R.id.text_produtor);
-        produtor.setText("Produtor: "+jogo.getProdutor());
+        produtor.setText(jogo.getProdutor());
         distribuidor = (TextView) findViewById(R.id.text_distribuidor);
-        distribuidor.setText("Distribuidor: "+jogo.getDistribuidor());
+        distribuidor.setText(jogo.getDistribuidor());
 
 
         Glide.with(this)
