@@ -18,7 +18,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import tk.trocagame.trocagame.R;
-import tk.trocagame.trocagame.utils.Console;
+import tk.trocagame.trocagame.model.Console;
 
 
 public class InicioFragment extends Fragment {
