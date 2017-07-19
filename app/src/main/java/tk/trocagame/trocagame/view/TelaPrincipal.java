@@ -19,7 +19,7 @@ import tk.trocagame.trocagame.model.Usuario;
 import tk.trocagame.trocagame.utils.LocalStorage;
 import tk.trocagame.trocagame.view.fragments.InicioFragment;
 import tk.trocagame.trocagame.view.fragments.PerfilFragment;
-import tk.trocagame.trocagame.view.fragments.TrocaFragment;
+import tk.trocagame.trocagame.view.fragments.TrocasFragment;
 
 
 public class TelaPrincipal extends AppCompatActivity
@@ -111,7 +111,7 @@ public class TelaPrincipal extends AppCompatActivity
             FragmentManager manager = getSupportFragmentManager();
             manager.beginTransaction().replace(R.id.content_tela_principal,fragment).commit();
         } else if (id == R.id.nav_trocas) {
-            TrocaFragment fragment = new TrocaFragment();
+            TrocasFragment fragment = new TrocasFragment();
             FragmentManager manager = getSupportFragmentManager();
             manager.beginTransaction().replace(R.id.content_tela_principal,fragment).commit();
         } else if (id == R.id.nav_faleconosco) {

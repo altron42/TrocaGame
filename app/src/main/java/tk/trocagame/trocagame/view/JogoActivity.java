@@ -1,12 +1,8 @@
 package tk.trocagame.trocagame.view;
 
-import android.media.Image;
+import android.content.Intent;
 import android.os.Bundle;
 import android.app.Activity;
-import android.support.v7.widget.RecyclerView;
-import android.util.Log;
-import android.view.View;
-import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -15,10 +11,7 @@ import com.bumptech.glide.Glide;
 
 import tk.trocagame.trocagame.R;
 import tk.trocagame.trocagame.model.Jogo;
-import tk.trocagame.trocagame.utils.GameRecyclerAdapter;
 import tk.trocagame.trocagame.utils.LocalStorage;
-
-import static android.content.ContentValues.TAG;
 
 public class JogoActivity extends Activity {
 
@@ -61,5 +54,13 @@ public class JogoActivity extends Activity {
 
 //        Toast.makeText(this, jogo.getDescricao(),Toast.LENGTH_SHORT).show();
     }
-
+    public void openTrocaActivity(Jogo jogo) {
+        if (jogo != null) {
+//            LocalStorage.getInstance(this).addToStorage(LocalStorage.JOGO_CLICADO, jogo);
+            Intent intent = new Intent(this,TrocaActivity.class);
+            this.startActivity(intent);
+        } else {
+            Toast.makeText(this,"Erro, objeto jogo = null",Toast.LENGTH_SHORT).show();
+        }
+    }
 }
