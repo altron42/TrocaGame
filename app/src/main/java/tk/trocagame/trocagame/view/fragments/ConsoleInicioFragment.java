@@ -2,6 +2,7 @@ package tk.trocagame.trocagame.view.fragments;
 
 import android.net.Uri;
 import android.os.Bundle;
+import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
@@ -50,6 +51,8 @@ public class ConsoleInicioFragment extends Fragment {
     private List<Jogo> gameSet2 = new ArrayList<>();
     private List<Jogo> gameSet3 = new ArrayList<>();
 
+    private View rootView;
+
     private RecyclerView gameRecyclerView1;
     private RecyclerView gameRecyclerView2;
     private RecyclerView gameRecyclerView3;
@@ -87,46 +90,51 @@ public class ConsoleInicioFragment extends Fragment {
             mConsoleId = getArguments().getInt(ARG_CONSOLE_ID);
         }
         mApiService = ApiUtils.getApiService();
-        buscaJogos();
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        View rootView = inflater.inflate(R.layout.fragment_console_inicio, container, false);
-
-        RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(rootView.getContext(),
-                LinearLayoutManager.HORIZONTAL, false);
+        rootView = inflater.inflate(R.layout.fragment_console_inicio, container, false);
 
         gameRecyclerView1 = (RecyclerView) rootView.findViewById(R.id.rv_console_inicio_1);
         gameRecyclerView2 = (RecyclerView) rootView.findViewById(R.id.rv_console_inicio_2);
         gameRecyclerView3 = (RecyclerView) rootView.findViewById(R.id.rv_console_inicio_3);
 
-        gameSet1 = gameList.subList(0,9);
-        gameSet2 = gameList.subList(10,19);
-        gameSet3 = gameList.subList(20,25);
-
         gSetAdapter1 = new GameRecyclerAdapter(gameSet1);
         gSetAdapter2 = new GameRecyclerAdapter(gameSet2);
         gSetAdapter3 = new GameRecyclerAdapter(gameSet3);
+        buscaJogos();
+
+        return rootView;
+    }
+
+    @Override
+    public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+
+        RecyclerView.LayoutManager mLayoutManager1 = new LinearLayoutManager(rootView.getContext(),
+                LinearLayoutManager.HORIZONTAL, false);
+        RecyclerView.LayoutManager mLayoutManager2 = new LinearLayoutManager(rootView.getContext(),
+                LinearLayoutManager.HORIZONTAL, false);
+        RecyclerView.LayoutManager mLayoutManager3 = new LinearLayoutManager(rootView.getContext(),
+                LinearLayoutManager.HORIZONTAL, false);
 
         gameRecyclerView1.setHasFixedSize(true);
-        gameRecyclerView1.setLayoutManager(mLayoutManager);
+        gameRecyclerView1.setLayoutManager(mLayoutManager1);
         gameRecyclerView1.setItemAnimator(new DefaultItemAnimator());
         gameRecyclerView1.setAdapter(gSetAdapter1);
 
         gameRecyclerView2.setHasFixedSize(true);
-        gameRecyclerView2.setLayoutManager(mLayoutManager);
+        gameRecyclerView2.setLayoutManager(mLayoutManager2);
         gameRecyclerView2.setItemAnimator(new DefaultItemAnimator());
         gameRecyclerView2.setAdapter(gSetAdapter2);
 
         gameRecyclerView3.setHasFixedSize(true);
-        gameRecyclerView3.setLayoutManager(mLayoutManager);
+        gameRecyclerView3.setLayoutManager(mLayoutManager3);
         gameRecyclerView3.setItemAnimator(new DefaultItemAnimator());
         gameRecyclerView3.setAdapter(gSetAdapter3);
-
-        return rootView;
     }
 
     // TODO: Rename method, update argument and hook method into UI event
@@ -195,7 +203,19 @@ public class ConsoleInicioFragment extends Fragment {
         if (response.isEmpty()) {
             Toast.makeText(getActivity(),"Erro, retorno vazio",Toast.LENGTH_SHORT).show();
         } else {
-            gameList = response;
+            gameList.clear();
+            gameList.addAll(response);
+
+            gameSet1.clear();
+            gameSet1.addAll(gameList.subList(0,9));
+            gameSet2.clear();
+            gameSet2.addAll(gameList.subList(10,19));
+            gameSet3.clear();
+            gameSet3.addAll(gameList.subList(20,gameList.size()-1));
+
+            gSetAdapter1.notifyDataSetChanged();
+            gSetAdapter2.notifyDataSetChanged();
+            gSetAdapter3.notifyDataSetChanged();
         }
     }
 }
