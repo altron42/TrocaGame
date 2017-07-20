@@ -63,7 +63,7 @@ public class GameRecyclerAdapter extends RecyclerView.Adapter<GameRecyclerAdapte
         //holder.gameImage.setImageURI(game.getImageUri());
         Glide.with(context)
                 .load(game.getSrc_imagem())
-                .placeholder(R.drawable.controle)
+                .placeholder(R.drawable.trocagame_progess_orange)
                 .into(holder.gameImage);
         holder.gameCard.setOnClickListener(new View.OnClickListener() {
             @Override

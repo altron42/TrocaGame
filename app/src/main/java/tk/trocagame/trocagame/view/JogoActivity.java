@@ -50,6 +50,7 @@ public class JogoActivity extends Activity {
 
         Glide.with(this)
                 .load(jogo.getImageUri())
+                .placeholder(R.drawable.trocagame_progess_orange)
                 .into(capa_jogo);
 
 //        Toast.makeText(this, jogo.getDescricao(),Toast.LENGTH_SHORT).show();
