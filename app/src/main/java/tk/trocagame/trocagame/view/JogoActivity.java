@@ -3,6 +3,8 @@ package tk.trocagame.trocagame.view;
 import android.content.Intent;
 import android.os.Bundle;
 import android.app.Activity;
+import android.view.View;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -53,8 +55,17 @@ public class JogoActivity extends Activity {
                 .into(capa_jogo);
 
 //        Toast.makeText(this, jogo.getDescricao(),Toast.LENGTH_SHORT).show();
+
+
+        Button mEmailSignInButton = (Button) findViewById(R.id.button_trocar);
+        mEmailSignInButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                openTrocaActivity();
+            }
+        });
     }
-    public void openTrocaActivity(Jogo jogo) {
+    public void openTrocaActivity() {
         if (jogo != null) {
 //            LocalStorage.getInstance(this).addToStorage(LocalStorage.JOGO_CLICADO, jogo);
             Intent intent = new Intent(this,TrocaActivity.class);
