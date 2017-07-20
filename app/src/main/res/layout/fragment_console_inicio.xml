@@ -8,22 +8,41 @@
 
     <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="match_parent">
 
-        <RelativeLayout
+        <LinearLayout
+            android:orientation="vertical"
             android:layout_width="match_parent"
             android:layout_height="match_parent" >
 
             <android.support.v7.widget.RecyclerView
                 android:id="@+id/rv_console_inicio_1"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:layout_height="wrap_content"
                 tools:orientation="horizontal"
                 app:layoutManager="android.support.v7.widget.LinearLayoutManager"
                 tools:context=".view.fragment.ConsoleInicioFragment"
                 tools:listitem="@layout/card_console_game"/>
 
-        </RelativeLayout>
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/rv_console_inicio_2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                tools:orientation="horizontal"
+                app:layoutManager="android.support.v7.widget.LinearLayoutManager"
+                tools:context=".view.fragment.ConsoleInicioFragment"
+                tools:listitem="@layout/card_console_game"/>
+
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/rv_console_inicio_3"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                tools:orientation="horizontal"
+                app:layoutManager="android.support.v7.widget.LinearLayoutManager"
+                tools:context=".view.fragment.ConsoleInicioFragment"
+                tools:listitem="@layout/card_console_game"/>
+
+        </LinearLayout>
 
     </ScrollView>
 

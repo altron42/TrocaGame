@@ -1,7 +1,5 @@
 package tk.trocagame.trocagame.view.fragments;
 
-import android.content.Context;
-import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -12,8 +10,6 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import java.util.ArrayList;
@@ -28,8 +24,6 @@ import tk.trocagame.trocagame.api.ApiUtils;
 import tk.trocagame.trocagame.model.Console;
 import tk.trocagame.trocagame.model.Jogo;
 import tk.trocagame.trocagame.utils.GameRecyclerAdapter;
-import tk.trocagame.trocagame.utils.LocalStorage;
-import tk.trocagame.trocagame.view.JogoActivity;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -41,6 +35,8 @@ import tk.trocagame.trocagame.view.JogoActivity;
  */
 public class ConsoleInicioFragment extends Fragment {
 
+    private static final String TAG = ConsoleInicioFragment.class.getName();
+
     // parametros para inicializacao do fragment
     private static final String ARG_CONSOLE_ID = "tk.trocagame.id.CONSOLE";
 
@@ -48,13 +44,21 @@ public class ConsoleInicioFragment extends Fragment {
 
     private OnFragmentInteractionListener mListener;
 
-    private ApiService mApiService;
-
-    private static final String TAG = ConsoleInicioFragment.class.getName();
-
     private List<Jogo> gameList = new ArrayList<>();
-    private RecyclerView recyclerView;
-    private GameRecyclerAdapter mAdapter;
+
+    private List<Jogo> gameSet1 = new ArrayList<>();
+    private List<Jogo> gameSet2 = new ArrayList<>();
+    private List<Jogo> gameSet3 = new ArrayList<>();
+
+    private RecyclerView gameRecyclerView1;
+    private RecyclerView gameRecyclerView2;
+    private RecyclerView gameRecyclerView3;
+
+    private GameRecyclerAdapter gSetAdapter1;
+    private GameRecyclerAdapter gSetAdapter2;
+    private GameRecyclerAdapter gSetAdapter3;
+
+    private ApiService mApiService;
 
     public ConsoleInicioFragment() {
         // Required empty public constructor
@@ -82,24 +86,45 @@ public class ConsoleInicioFragment extends Fragment {
         if (getArguments() != null) {
             mConsoleId = getArguments().getInt(ARG_CONSOLE_ID);
         }
+        mApiService = ApiUtils.getApiService();
+        buscaJogos();
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        mApiService = ApiUtils.getApiService();
-        buscaJogos();
         // Inflate the layout for this fragment
         View rootView = inflater.inflate(R.layout.fragment_console_inicio, container, false);
 
-        recyclerView = (RecyclerView) rootView.findViewById(R.id.rv_console_inicio_1);
-        mAdapter = new GameRecyclerAdapter(gameList);
         RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(rootView.getContext(),
                 LinearLayoutManager.HORIZONTAL, false);
-        recyclerView.setHasFixedSize(true);
-        recyclerView.setLayoutManager(mLayoutManager);
-        recyclerView.setItemAnimator(new DefaultItemAnimator());
-        recyclerView.setAdapter(mAdapter);
+
+        gameRecyclerView1 = (RecyclerView) rootView.findViewById(R.id.rv_console_inicio_1);
+        gameRecyclerView2 = (RecyclerView) rootView.findViewById(R.id.rv_console_inicio_2);
+        gameRecyclerView3 = (RecyclerView) rootView.findViewById(R.id.rv_console_inicio_3);
+
+        gameSet1 = gameList.subList(0,9);
+        gameSet2 = gameList.subList(10,19);
+        gameSet3 = gameList.subList(20,25);
+
+        gSetAdapter1 = new GameRecyclerAdapter(gameSet1);
+        gSetAdapter2 = new GameRecyclerAdapter(gameSet2);
+        gSetAdapter3 = new GameRecyclerAdapter(gameSet3);
+
+        gameRecyclerView1.setHasFixedSize(true);
+        gameRecyclerView1.setLayoutManager(mLayoutManager);
+        gameRecyclerView1.setItemAnimator(new DefaultItemAnimator());
+        gameRecyclerView1.setAdapter(gSetAdapter1);
+
+        gameRecyclerView2.setHasFixedSize(true);
+        gameRecyclerView2.setLayoutManager(mLayoutManager);
+        gameRecyclerView2.setItemAnimator(new DefaultItemAnimator());
+        gameRecyclerView2.setAdapter(gSetAdapter2);
+
+        gameRecyclerView3.setHasFixedSize(true);
+        gameRecyclerView3.setLayoutManager(mLayoutManager);
+        gameRecyclerView3.setItemAnimator(new DefaultItemAnimator());
+        gameRecyclerView3.setAdapter(gSetAdapter3);
 
         return rootView;
     }
@@ -110,6 +135,8 @@ public class ConsoleInicioFragment extends Fragment {
             mListener.onFragmentInteraction(uri);
         }
     }
+
+
 
 /*
     @Override
@@ -150,13 +177,8 @@ public class ConsoleInicioFragment extends Fragment {
             @Override
             public void onResponse(Call<List<Jogo>> call, Response<List<Jogo>> response) {
                 if(response.isSuccessful()) {
-
                     Log.i(TAG,"GET enviado para API.");
-                    if (response.body().isEmpty()) {
-                        Toast.makeText(getActivity(),"Erro, retorno vazio",Toast.LENGTH_SHORT).show();
-                    } else {
-                        gameList = response.body();
-                    }
+                    populateDataSet(response.body());
                 } else {
                     Log.e(TAG, "RESPONSE ERROR CODE: " + response.code() + response.raw());
                 }
@@ -167,5 +189,13 @@ public class ConsoleInicioFragment extends Fragment {
                 Log.e(TAG, "Ocorreu algum erro. " + t.getMessage());
             }
         });
+    }
+
+    private void populateDataSet(List<Jogo> response) {
+        if (response.isEmpty()) {
+            Toast.makeText(getActivity(),"Erro, retorno vazio",Toast.LENGTH_SHORT).show();
+        } else {
+            gameList = response;
+        }
     }
 }
