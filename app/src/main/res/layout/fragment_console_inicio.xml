@@ -8,12 +8,21 @@
 
     <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent" >
 
         <LinearLayout
             android:orientation="vertical"
             android:layout_width="match_parent"
             android:layout_height="match_parent" >
+
+            <TextView
+                android:id="@+id/textView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/card_console_game_horizontal_margin"
+                android:textSize="@dimen/tv_list_label_size"
+                android:textColor="@color/colorWhite"
+                android:text="Ofertas em alta" />
 
             <android.support.v7.widget.RecyclerView
                 android:id="@+id/rv_console_inicio_1"
@@ -24,6 +33,15 @@
                 tools:context=".view.fragment.ConsoleInicioFragment"
                 tools:listitem="@layout/card_console_game"/>
 
+            <TextView
+                android:id="@+id/tv_main_2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/card_console_game_horizontal_margin"
+                android:textSize="@dimen/tv_list_label_size"
+                android:textColor="@color/colorWhite"
+                android:text="Mais desejados" />
+
             <android.support.v7.widget.RecyclerView
                 android:id="@+id/rv_console_inicio_2"
                 android:layout_width="match_parent"
@@ -32,6 +50,15 @@
                 app:layoutManager="android.support.v7.widget.LinearLayoutManager"
                 tools:context=".view.fragment.ConsoleInicioFragment"
                 tools:listitem="@layout/card_console_game"/>
+
+            <TextView
+                android:id="@+id/tv_main_3"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/card_console_game_horizontal_margin"
+                android:textSize="@dimen/tv_list_label_size"
+                android:textColor="@color/colorWhite"
+                android:text="Recomandaçoes" />
 
             <android.support.v7.widget.RecyclerView
                 android:id="@+id/rv_console_inicio_3"
