@@ -3,6 +3,7 @@ package tk.trocagame.trocagame.view;
 import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
 import android.annotation.TargetApi;
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.support.annotation.NonNull;
@@ -23,6 +24,7 @@ import android.util.Log;
 import android.view.KeyEvent;
 import android.view.View;
 import android.view.View.OnClickListener;
+import android.view.WindowManager;
 import android.view.inputmethod.EditorInfo;
 import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
@@ -109,11 +111,27 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
 
         mLoginFormView = findViewById(R.id.login_form);
         mProgressView = findViewById(R.id.login_progress);
+
+        checkLocalStorage();
     }
 
     protected void openRegisterUserActivity() {
         Intent intent = new Intent(this, RegisterActivity.class);
         startActivity(intent);
+    }
+
+    private boolean checkLocalStorage() {
+        Usuario activeUser = LocalStorage.getInstance(this).getObject(LocalStorage.ACTIVE_USER,Usuario.class);
+
+        if ( activeUser != null ) {
+            mEmailView.setText(activeUser.getLogin());
+            mPasswordView.setText(activeUser.getSenha());
+            // metodo abaixo previne que os editTextViews peguem focus
+            this.getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_HIDDEN);
+            return true;
+        }
+
+        return false;
     }
 
     private void populateAutoComplete() {
@@ -210,7 +228,12 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
         } else {
             // Show a progress spinner, and kick off a background task to
             // perform the user login attempt.
-            showProgress(true);
+            // showProgress(true);
+            final ProgressDialog progressDialog = new ProgressDialog(LoginActivity.this,
+                    R.style.AppTheme_Dark_Dialog);
+            progressDialog.setIndeterminate(true);
+            progressDialog.setMessage("Authenticating...");
+            progressDialog.show();
             verificaLogin(email, password);
         }
     }
