@@ -196,4 +196,11 @@
         </LinearLayout>
     </ScrollView>
 
+    <ListView
+        android:id="@+id/lv_mensagens"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/scrollView2"
+        android:layout_centerHorizontal="true" />
+
 </RelativeLayout>

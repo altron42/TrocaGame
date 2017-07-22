@@ -40,6 +40,10 @@ public interface ApiService {
     Call<ResultStatus> novoUsuario(@Body Usuario usuario);
 
     @Headers( "Content-Type: application/json" )
+    @POST("usuario/busca_usuario_por_id")
+    Call<List<Usuario>> buscaUsuarioPorId(@Body Usuario usuario);
+
+    @Headers( "Content-Type: application/json" )
     @POST("usuario/altera_usuario")
     Call<ResultStatus> updateUsuario(@Body Usuario usuario);
 

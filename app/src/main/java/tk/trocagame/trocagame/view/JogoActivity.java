@@ -3,17 +3,31 @@ package tk.trocagame.trocagame.view;
 import android.content.Intent;
 import android.os.Bundle;
 import android.app.Activity;
+import android.util.Log;
 import android.view.View;
+import android.widget.Adapter;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 
+import java.lang.reflect.Array;
+import java.util.ArrayList;
+import java.util.List;
+
+import retrofit2.Callback;
 import tk.trocagame.trocagame.R;
+import tk.trocagame.trocagame.api.ApiService;
+import tk.trocagame.trocagame.api.ApiUtils;
 import tk.trocagame.trocagame.model.Jogo;
+import tk.trocagame.trocagame.model.Usuario;
+import tk.trocagame.trocagame.utils.Adapter_comentario;
 import tk.trocagame.trocagame.utils.LocalStorage;
+
+import static android.content.ContentValues.TAG;
 
 public class JogoActivity extends Activity {
 
@@ -25,6 +39,9 @@ public class JogoActivity extends Activity {
     private TextView ano_lancamento;
     private TextView produtor;
     private TextView distribuidor;
+    private ListView lvMensagens;
+    private ApiService mApiService;
+    private Usuario usuario;
 
 
 
@@ -48,6 +65,7 @@ public class JogoActivity extends Activity {
         produtor.setText(jogo.getProdutor());
         distribuidor = (TextView) findViewById(R.id.text_distribuidor);
         distribuidor.setText(jogo.getDistribuidor());
+        lvMensagens = (ListView) findViewById(R.id.lv_mensagens);
 
 
         Glide.with(this)
@@ -64,7 +82,41 @@ public class JogoActivity extends Activity {
                 openTrocaActivity();
             }
         });
+
+        ArrayList<String> mensagens = adicionaMensagens();
+        Adapter adapter = new Adapter_comentario( this,  );
+//        lv_mensagens
     }
+    private ArrayList<String> adicionaMensagens() {
+        usuario = LocalStorage.getInstance(this.getContext()).getObject(LocalStorage.ACTIVE_USER, Usuario.class);
+        mApiService = ApiUtils.getApiService();
+
+        mApiService.buscaUsuarioPorId(new Usuario(comentarios.get(position).getId_dono())).enqueue(new Callback<List<Usuario>>() {
+            @Override
+            public void onResponse(Call<List<Usuario>> call, Response<List<Usuario>> response) {
+                if (response.isSuccessful()) {
+
+                    Log.i( TAG, "POST enviado para API. " + response.body() );
+                    if (response.body().isEmpty()) {
+                        Log.i( TAG, "Erro na busca do usuario do comentario" );
+                    } else {
+                        Usuario usuario = response.body().get( 0 );
+                        nomeDonoMensagem.setText( usuario.getNome() );
+                    }
+                } else {
+                    Log.e( TAG, "RESPONSE ERROR CODE: " + response.code() + response.raw() );
+                }
+            }
+
+            @Override
+            public void onFailure(Call<List<Usuario>> call, Throwable t) {
+                Log.e(TAG, "Ocorreu algum erro. " + t.getMessage());
+            }
+        });
+
+        return null;
+    }
+
     public void openTrocaActivity() {
         if (jogo != null) {
 //            LocalStorage.getInstance(this).addToStorage(LocalStorage.JOGO_CLICADO, jogo);
