@@ -3,6 +3,8 @@ package tk.trocagame.trocagame.view;
 import android.content.Intent;
 import android.os.Bundle;
 import android.app.Activity;
+import android.view.View;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -46,6 +48,15 @@ public class JogoActivity extends Activity {
         produtor.setText(jogo.getProdutor());
         distribuidor = (TextView) findViewById(R.id.text_distribuidor);
         distribuidor.setText(jogo.getDistribuidor());
+
+
+        Button oferta = (Button) findViewById(R.id.button_oferta);
+        oferta.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                openOfertaActivity(jogo);
+            }
+        });
 
 
         Glide.with(this)
