@@ -20,7 +20,8 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:orientation="horizontal">
+                android:orientation="horizontal"
+                android:padding="@dimen/appbar_padding_top">
 
                 <TextView
                     android:id="@+id/text_ofertar_fixo"
@@ -36,26 +37,39 @@
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="192dp"
-                android:orientation="horizontal">
+                android:layout_height="175dp"
+                android:orientation="horizontal"
+                android:weightSum="1">
 
-                <TextView
-                    android:id="@+id/textView_title"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="TextView"/>
+                <LinearLayout
+                    android:layout_width="162dp"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical"
+                    android:layout_weight="1">
 
-                <ImageView
-                    android:id="@+id/imageView4"
-                    android:layout_width="match_parent"
-                    android:layout_height="184dp"
-                    android:layout_alignParentBottom="true"
-                    android:layout_alignParentStart="true"
-                    android:layout_marginBottom="497dp"
-                    android:layout_marginStart="104dp"
-                    android:layout_weight="0.72"
-                    app:srcCompat="@drawable/battlefield1_ps4"/>
+                    <TextView
+                        android:id="@+id/textView_title"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_weight="0.80"
+                        android:text="TextView"
+                        android:textSize="16sp"
+                        android:textStyle="bold"/>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="172dp"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical"
+                    android:weightSum="1">
+
+                    <ImageView
+                        android:id="@+id/imageView_oferta"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        app:srcCompat="@drawable/battlefield1_ps4"
+                        />
+                </LinearLayout>
 
             </LinearLayout>
 
@@ -65,13 +79,26 @@
                 android:layout_weight="1"
                 android:orientation="vertical">
 
+                <TextView
+                    android:id="@+id/textView2"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Qual o ano de Compra do Jogo?"/>
+
                 <EditText
                     android:id="@+id/editText_ano_compra"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:contentDescription="Ano de Compra"
                     android:ems="10"
                     android:inputType="textPersonName"
-                    android:text="Ano de Compra"/>
+                    />
+
+                <TextView
+                    android:id="@+id/textView3"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Qual o estado do seu Jogo?"/>
 
                 <EditText
                     android:id="@+id/editText_estado_jogo"
@@ -79,7 +106,7 @@
                     android:layout_height="wrap_content"
                     android:ems="10"
                     android:inputType="textPersonName"
-                    android:text="Estado do Jogo"/>
+                    />
 
                 <Button
                     android:id="@+id/button"

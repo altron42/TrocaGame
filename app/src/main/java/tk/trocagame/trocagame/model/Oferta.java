@@ -13,6 +13,15 @@ public class Oferta {
     private int id_dono;
     private String data_cadastro_sistema;
 
+    public Oferta(){
+        this.id=0;
+        this.id_jogo=0;
+        this.estado_jogo=null;
+        this.ano_compra=null;
+        this.id_dono=0;
+        this.data_cadastro_sistema=null;
+
+    }
 
     public Oferta(int id, int id_jogo, String estado_jogo, String ano_compra, int id_dono, String data_cadastro_sistema){
         this.id=id;
