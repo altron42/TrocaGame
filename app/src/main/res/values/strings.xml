@@ -48,6 +48,7 @@
     <string name="action_atualizar_dados">Atualizar</string>
     <string name="title_activity_jogo">JogoActivity</string>
     <string name="title_activity_troca">TrocaActivity</string>
+    <string name="title_activity_oferta">OfertaActivity</string>
 
 
 </resources>

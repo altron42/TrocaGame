@@ -55,10 +55,21 @@ public class JogoActivity extends Activity {
 
 //        Toast.makeText(this, jogo.getDescricao(),Toast.LENGTH_SHORT).show();
     }
+    
     public void openTrocaActivity(Jogo jogo) {
         if (jogo != null) {
 //            LocalStorage.getInstance(this).addToStorage(LocalStorage.JOGO_CLICADO, jogo);
             Intent intent = new Intent(this,TrocaActivity.class);
+            this.startActivity(intent);
+        } else {
+            Toast.makeText(this,"Erro, objeto jogo = null",Toast.LENGTH_SHORT).show();
+        }
+    }
+
+    public void openOfertaActivity(Jogo jogo) {
+        if (jogo != null) {
+//            LocalStorage.getInstance(this).addToStorage(LocalStorage.JOGO_CLICADO, jogo);
+            Intent intent = new Intent(this,OfertaActivity.class);
             this.startActivity(intent);
         } else {
             Toast.makeText(this,"Erro, objeto jogo = null",Toast.LENGTH_SHORT).show();
