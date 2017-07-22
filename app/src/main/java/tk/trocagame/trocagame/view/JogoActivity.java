@@ -3,6 +3,8 @@ package tk.trocagame.trocagame.view;
 import android.content.Intent;
 import android.os.Bundle;
 import android.app.Activity;
+import android.view.View;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -48,6 +50,15 @@ public class JogoActivity extends Activity {
         distribuidor.setText(jogo.getDistribuidor());
 
 
+        Button oferta = (Button) findViewById(R.id.button_oferta);
+        oferta.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                openOfertaActivity(jogo);
+            }
+        });
+
+
         Glide.with(this)
                 .load(jogo.getImageUri())
                 .placeholder(R.drawable.trocagame_progess_orange)
@@ -55,10 +66,21 @@ public class JogoActivity extends Activity {
 
 //        Toast.makeText(this, jogo.getDescricao(),Toast.LENGTH_SHORT).show();
     }
+    
     public void openTrocaActivity(Jogo jogo) {
         if (jogo != null) {
 //            LocalStorage.getInstance(this).addToStorage(LocalStorage.JOGO_CLICADO, jogo);
             Intent intent = new Intent(this,TrocaActivity.class);
+            this.startActivity(intent);
+        } else {
+            Toast.makeText(this,"Erro, objeto jogo = null",Toast.LENGTH_SHORT).show();
+        }
+    }
+
+    public void openOfertaActivity(Jogo jogo) {
+        if (jogo != null) {
+//            LocalStorage.getInstance(this).addToStorage(LocalStorage.JOGO_CLICADO, jogo);
+            Intent intent = new Intent(this,OfertaActivity.class);
             this.startActivity(intent);
         } else {
             Toast.makeText(this,"Erro, objeto jogo = null",Toast.LENGTH_SHORT).show();
