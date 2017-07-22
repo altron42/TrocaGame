@@ -39,7 +39,7 @@ public class GameRecyclerAdapter extends RecyclerView.Adapter<GameRecyclerAdapte
             super(view);
             context = view.getContext();
             gameCard = (CardView) view.findViewById(R.id.cv_jogo);
-            gameName = (TextView) view.findViewById(R.id.tv_game_name);
+            //gameName = (TextView) view.findViewById(R.id.tv_game_name);
             gameImage = (ImageView) view.findViewById(R.id.iv_game_image);
         }
     }
@@ -59,10 +59,11 @@ public class GameRecyclerAdapter extends RecyclerView.Adapter<GameRecyclerAdapte
     @Override
     public void onBindViewHolder(MyViewHolder holder, final int position) {
         Jogo game = gameList.get(position);
-        holder.gameName.setText(game.getNome());
+        //holder.gameName.setText(game.getNome());
         //holder.gameImage.setImageURI(game.getImageUri());
         Glide.with(context)
                 .load(game.getSrc_imagem())
+                .placeholder(R.drawable.trocagame_progess_orange)
                 .into(holder.gameImage);
         holder.gameCard.setOnClickListener(new View.OnClickListener() {
             @Override

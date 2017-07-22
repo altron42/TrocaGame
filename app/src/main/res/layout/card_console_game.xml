@@ -5,6 +5,7 @@
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     android:orientation="vertical"
+    android:backgroundTintMode="multiply"
     android:layout_gravity="center_horizontal" >
 
     <LinearLayout
@@ -20,8 +21,9 @@
             android:layout_marginTop="@dimen/card_console_game_horizontal_margin"
             android:layout_marginLeft="@dimen/card_console_game_horizontal_margin"
             android:layout_marginRight="@dimen/card_console_game_horizontal_margin"
-            app:srcCompat="@drawable/battlefield1_ps4" />
+            app:srcCompat="@drawable/trocagame_progess_orange" />
 
+        <!--
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="35dp"
@@ -36,5 +38,6 @@
                 android:text="TextView" />
 
         </LinearLayout>
+        -->
     </LinearLayout>
 </android.support.v7.widget.CardView>
