@@ -49,5 +49,6 @@
     <string name="title_activity_jogo">JogoActivity</string>
     <string name="title_activity_troca">TrocaActivity</string>
 
+    <string name="dialog_authenticating">Autenticando...</string>
 
 </resources>
