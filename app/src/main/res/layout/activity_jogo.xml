@@ -6,6 +6,13 @@
     android:layout_height="match_parent"
     tools:context="tk.trocagame.trocagame.view.JogoActivity">
 
+    <ListView
+        android:id="@+id/lv_comentarios"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/scrollView2"
+        android:layout_centerHorizontal="true"/>
+
     <ScrollView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -182,7 +189,7 @@
                     android:text="Ofertar" />
 
                 <Button
-                    android:id="@+id/button3"
+                    android:id="@+id/button_trocar"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_margin="@dimen/cardview_default_elevation"

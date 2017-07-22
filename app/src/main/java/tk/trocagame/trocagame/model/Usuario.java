@@ -25,6 +25,10 @@ public class Usuario {
     public Usuario(String login, String senha) {
         this(0, login, "", senha, "", "", "");
     }
+    public Usuario(int id) {
+        this(id, "", "", "", "", "", "");
+    }
+
 
     public Usuario(long id, String login, String nome, String senha, String descricao, String data_inscricao, String telefone) {
         this.id = id;
