@@ -6,6 +6,7 @@ import android.app.Activity;
 import android.util.Log;
 import android.view.View;
 import android.widget.Adapter;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.ListView;
@@ -18,10 +19,13 @@ import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.List;
 
+import retrofit2.Call;
 import retrofit2.Callback;
+import retrofit2.Response;
 import tk.trocagame.trocagame.R;
 import tk.trocagame.trocagame.api.ApiService;
 import tk.trocagame.trocagame.api.ApiUtils;
+import tk.trocagame.trocagame.model.Comentario;
 import tk.trocagame.trocagame.model.Jogo;
 import tk.trocagame.trocagame.model.Usuario;
 import tk.trocagame.trocagame.utils.Adapter_comentario;
@@ -39,7 +43,7 @@ public class JogoActivity extends Activity {
     private TextView ano_lancamento;
     private TextView produtor;
     private TextView distribuidor;
-    private ListView lvMensagens;
+    private ListView lv_comentarios;
     private ApiService mApiService;
     private Usuario usuario;
 
@@ -65,7 +69,7 @@ public class JogoActivity extends Activity {
         produtor.setText(jogo.getProdutor());
         distribuidor = (TextView) findViewById(R.id.text_distribuidor);
         distribuidor.setText(jogo.getDistribuidor());
-        lvMensagens = (ListView) findViewById(R.id.lv_mensagens);
+        lv_comentarios = (ListView) findViewById(R.id.lv_comentarios);
 
 
         Glide.with(this)
@@ -83,38 +87,47 @@ public class JogoActivity extends Activity {
             }
         });
 
-        ArrayList<String> mensagens = adicionaMensagens();
-        Adapter adapter = new Adapter_comentario( this,  );
+        ArrayList<Comentario> mensagens = adicionaMensagens();
+        ArrayAdapter adapter = new Adapter_comentario( this, adicionaMensagens());
 //        lv_mensagens
     }
-    private ArrayList<String> adicionaMensagens() {
-        usuario = LocalStorage.getInstance(this.getContext()).getObject(LocalStorage.ACTIVE_USER, Usuario.class);
-        mApiService = ApiUtils.getApiService();
+    private ArrayList<Comentario> adicionaMensagens() {
+//        jogo = LocalStorage.getInstance(this).getObject(LocalStorage.ACTIVE_USER, Usuario.class);
+//        mApiService = ApiUtils.getApiService();
 
-        mApiService.buscaUsuarioPorId(new Usuario(comentarios.get(position).getId_dono())).enqueue(new Callback<List<Usuario>>() {
-            @Override
-            public void onResponse(Call<List<Usuario>> call, Response<List<Usuario>> response) {
-                if (response.isSuccessful()) {
 
-                    Log.i( TAG, "POST enviado para API. " + response.body() );
-                    if (response.body().isEmpty()) {
-                        Log.i( TAG, "Erro na busca do usuario do comentario" );
-                    } else {
-                        Usuario usuario = response.body().get( 0 );
-                        nomeDonoMensagem.setText( usuario.getNome() );
-                    }
-                } else {
-                    Log.e( TAG, "RESPONSE ERROR CODE: " + response.code() + response.raw() );
-                }
-            }
+        ArrayList<Comentario> comentarios= new ArrayList<Comentario>(  );
+        Comentario comentario = new Comentario(1, 1, 180,5, "24-24-2017", "Foda esse Game");
+        comentarios.add( comentario );
+        comentario = new Comentario(2, 2, 180,2, "24-24-2017", "Foda esse Game2");
+        comentarios.add( comentario );
 
-            @Override
-            public void onFailure(Call<List<Usuario>> call, Throwable t) {
-                Log.e(TAG, "Ocorreu algum erro. " + t.getMessage());
-            }
-        });
+        return comentarios;
 
-        return null;
+//        mApiService.buscaComentariosPorId(new Jogo(jogo.getId())).enqueue(new Callback<List<Comentario>>() {
+//            @Override
+//            public void onResponse(Call<List<Comentario>> call, Response<List<Comentario>> response) {
+//                if (response.isSuccessful()) {
+//
+//                    Log.i( TAG, "POST enviado para API. " + response.body() );
+//                    if (response.body().isEmpty()) {
+//                        Log.i( TAG, "Erro na busca do usuario do comentario" );
+//                    } else {
+//                        Usuario usuario = response.body().get( 0 );
+//                        nomeDonoMensagem.setText( usuario.getNome() );
+//                    }
+//                } else {
+//                    Log.e( TAG, "RESPONSE ERROR CODE: " + response.code() + response.raw() );
+//                }
+//            }
+//
+//            @Override
+//            public void onFailure(Call<List<Usuario>> call, Throwable t) {
+//                Log.e(TAG, "Ocorreu algum erro. " + t.getMessage());
+//            }
+//        });
+
+//        return null;
     }
 
     public void openTrocaActivity() {

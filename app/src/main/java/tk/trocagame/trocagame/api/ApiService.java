@@ -10,6 +10,7 @@ import retrofit2.http.GET;
 import retrofit2.http.Header;
 import retrofit2.http.Headers;
 import retrofit2.http.POST;
+import tk.trocagame.trocagame.model.Comentario;
 import tk.trocagame.trocagame.model.Console;
 import tk.trocagame.trocagame.model.Jogo;
 import tk.trocagame.trocagame.model.ResultStatus;
@@ -50,6 +51,13 @@ public interface ApiService {
     @Headers( "Content-Type: application/json" )
     @POST("jogo/busca_jogos_por_console")
     Call<List<Jogo>> buscaJogosConsole(@Body Console console);
+
+
+//    Chama a função que retorna Comentários por Jogo (Passa o Jogo e recebe
+//    uma lista de comentários
+    @Headers( "Content-Type: application/json" )
+    @POST("comentario/busca_comentario_por_id")
+    Call<List<Comentario>> buscaComentariosPorId(@Body Jogo jogo);
 
     @GET("jogo/busca_all_jogos")
     Call<List<Jogo>> buscaAllJogos();

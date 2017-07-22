@@ -48,41 +48,48 @@ public class Adapter_comentario extends ArrayAdapter<Comentario> {
         this.comentarios = comentarios;
     }
 
+    @Override
     public View getView(int position, View converView, ViewGroup parent){
         LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+
         View rowView = inflater.inflate(R.layout.linha_comentario, parent, false);
+
         usuario = LocalStorage.getInstance(this.getContext()).getObject(LocalStorage.ACTIVE_USER, Usuario.class);
+
         mApiService = ApiUtils.getApiService();
-        final TextView nomeDonoMensagem = (TextView) rowView.findViewById(R.id.nome_dono_mensagem);
+
+        TextView nomeDonoMensagem = (TextView) rowView.findViewById(R.id.nome_dono_mensagem);
         TextView dataMensagem = (TextView) rowView.findViewById(R.id.data_mensagem);
         TextView textMensagem = (TextView) rowView.findViewById(R.id.text_mensagem);
 
-        mApiService.buscaUsuarioPorId(new Usuario(comentarios.get(position).getId_dono())).enqueue(new Callback<List<Usuario>>() {
-            @Override
-            public void onResponse(Call<List<Usuario>> call, Response<List<Usuario>> response) {
-                if (response.isSuccessful()) {
+//        mApiService.buscaUsuarioPorId(new Usuario(comentarios.get(position).getId_dono())).enqueue(new Callback<List<Usuario>>() {
+//            @Override
+//            public void onResponse(Call<List<Usuario>> call, Response<List<Usuario>> response) {
+//                if (response.isSuccessful()) {
+//
+//                    Log.i( TAG, "POST enviado para API. " + response.body() );
+//                    if (response.body().isEmpty()) {
+//                        Log.i( TAG, "Erro na busca do usuario do comentario" );
+//                    } else {
+//                        Usuario usuario = response.body().get( 0 );
+//                        nomeDonoMensagem.setText( usuario.getNome() );
+//                    }
+//                } else {
+//                    Log.e( TAG, "RESPONSE ERROR CODE: " + response.code() + response.raw() );
+//                }
+//            }
+//
+//            @Override
+//            public void onFailure(Call<List<Usuario>> call, Throwable t) {
+//
+//            }
+//        });
 
-                    Log.i( TAG, "POST enviado para API. " + response.body() );
-                    if (response.body().isEmpty()) {
-                        Log.i( TAG, "Erro na busca do usuario do comentario" );
-                    } else {
-                        Usuario usuario = response.body().get( 0 );
-                        nomeDonoMensagem.setText( usuario.getNome() );
-                    }
-                } else {
-                    Log.e( TAG, "RESPONSE ERROR CODE: " + response.code() + response.raw() );
-                }
-            }
-
-            @Override
-            public void onFailure(Call<List<Usuario>> call, Throwable t) {
-
-            }
-        });
-
-
+//        nomeDonoMensagem.setText( "VICTOR" );
         dataMensagem.setText(comentarios.get(position).getData());
+//        dataMensagem.setText("28-30-2017");
         textMensagem.setText(comentarios.get(position).getMensagem());
+        nomeDonoMensagem.setText(comentarios.get(position).getMensagem());
 
         return rowView;
 
