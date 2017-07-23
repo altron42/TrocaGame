@@ -50,5 +50,6 @@
     <string name="title_activity_troca">TrocaActivity</string>
     <string name="title_activity_oferta">OfertaActivity</string>
 
+    <string name="dialog_authenticating">Autenticando...</string>
 
 </resources>
