@@ -60,7 +60,7 @@ public class GameRecyclerAdapter extends RecyclerView.Adapter<GameRecyclerAdapte
     public void onBindViewHolder(MyViewHolder holder, final int position) {
         Jogo game = gameList.get(position);
         //holder.gameName.setText(game.getNome());
-        //holder.gameImage.setImageURI(game.getImageUri());
+        //holder.userImage.setImageURI(game.getImageUri());
         Glide.with(context)
                 .load(game.getSrc_imagem())
                 .placeholder(R.drawable.trocagame_progess_orange)

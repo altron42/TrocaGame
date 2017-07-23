@@ -6,20 +6,30 @@ package tk.trocagame.trocagame.model;
 
 public class Comentario {
 
+    private static final String ID = "id";
+    private static final String USUARIO = "nome_usuario";
+    private static final String ID_JOGO = "id_jogo";
+    private static final String ID_CONSOLE = "id_console";
+    private static final String DATA = "data";
+    private static final String MENSAGEM = "mensagem";
+    private static final String FOTO_URI = "foto_uri";
+
     private int id;
-    private int id_dono;
+    private String nome_usuario;
     private int id_jogo;
     private int id_console;
     private String data;
     private String mensagem;
+    private String foto_uri;
 
-    public Comentario(int id, int id_dono, int id_jogo, int id_console, String data, String mensagem){
+    public Comentario(int id, String nome_usuario, int id_jogo, int id_console, String data, String mensagem, String foto_uri) {
         this.id = id;
-        this.id_dono = id_dono;
+        this.nome_usuario = nome_usuario;
         this.id_jogo = id_jogo;
         this.id_console = id_console;
         this.data = data;
         this.mensagem = mensagem;
+        this.foto_uri = foto_uri;
     }
 
     public int getId() {
@@ -30,12 +40,12 @@ public class Comentario {
         this.id = id;
     }
 
-    public int getId_dono() {
-        return id_dono;
+    public String getNome_usuario() {
+        return nome_usuario;
     }
 
-    public void setId_dono(int id_dono) {
-        this.id_dono = id_dono;
+    public void setNome_usuario(String nome_usuario) {
+        this.nome_usuario = nome_usuario;
     }
 
     public int getId_jogo() {
@@ -70,15 +80,24 @@ public class Comentario {
         this.mensagem = mensagem;
     }
 
+    public String getFoto_uri() {
+        return foto_uri;
+    }
+
+    public void setFoto_uri(String foto_uri) {
+        this.foto_uri = foto_uri;
+    }
+
     @Override
     public String toString() {
         return "Comentario{" +
                 "id=" + id +
-                ", id_dono='" + id_dono + '\'' +
+                ", nome_usuario='" + nome_usuario + '\'' +
                 ", id_jogo=" + id_jogo +
-                ", id_console='" + id_console + '\'' +
+                ", id_console=" + id_console +
                 ", data='" + data + '\'' +
                 ", mensagem='" + mensagem + '\'' +
+                ", foto_uri='" + foto_uri + '\'' +
                 '}';
     }
 }
