@@ -7,6 +7,7 @@ import retrofit2.http.Body;
 import retrofit2.http.GET;
 import retrofit2.http.Headers;
 import retrofit2.http.POST;
+import tk.trocagame.trocagame.model.Comentario;
 import tk.trocagame.trocagame.model.Console;
 import tk.trocagame.trocagame.model.Jogo;
 import tk.trocagame.trocagame.model.Oferta;
