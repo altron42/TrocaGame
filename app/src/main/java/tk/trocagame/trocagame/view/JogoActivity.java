@@ -26,7 +26,7 @@ import tk.trocagame.trocagame.api.ApiService;
 import tk.trocagame.trocagame.api.ApiUtils;
 import tk.trocagame.trocagame.model.Comentario;
 import tk.trocagame.trocagame.model.Jogo;
-import tk.trocagame.trocagame.utils.CommentRecyclerAdapter;
+import tk.trocagame.trocagame.adapter.CommentRecyclerAdapter;
 import tk.trocagame.trocagame.utils.LocalStorage;
 
 public class JogoActivity extends Activity {
