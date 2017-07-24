@@ -28,6 +28,10 @@ public class Jogo {
     private String genero;
     private String src_imagem;
 
+    public Jogo(int id){
+        this.id = id;
+    }
+
     public Jogo(long id, String nome, long console, String descricao,
                 String ano_lancamento, String distribuidor, String produtor,
                 String genero, String src_imagem) {

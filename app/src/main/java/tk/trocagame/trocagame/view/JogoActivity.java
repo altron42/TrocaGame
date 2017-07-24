@@ -6,13 +6,18 @@ import android.app.Activity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 
+import java.util.ArrayList;
+
 import tk.trocagame.trocagame.R;
+import tk.trocagame.trocagame.api.ApiService;
 import tk.trocagame.trocagame.model.Jogo;
+import tk.trocagame.trocagame.model.Usuario;
 import tk.trocagame.trocagame.utils.LocalStorage;
 
 public class JogoActivity extends Activity {
@@ -25,6 +30,9 @@ public class JogoActivity extends Activity {
     private TextView ano_lancamento;
     private TextView produtor;
     private TextView distribuidor;
+    private ListView lv_comentarios;
+    private ApiService mApiService;
+    private Usuario usuario;
 
 
 
@@ -48,6 +56,7 @@ public class JogoActivity extends Activity {
         produtor.setText(jogo.getProdutor());
         distribuidor = (TextView) findViewById(R.id.text_distribuidor);
         distribuidor.setText(jogo.getDistribuidor());
+        lv_comentarios = (ListView) findViewById(R.id.lv_comentarios);
 
 
         Button oferta = (Button) findViewById(R.id.button_oferta);
@@ -65,8 +74,21 @@ public class JogoActivity extends Activity {
                 .into(capa_jogo);
 
 //        Toast.makeText(this, jogo.getDescricao(),Toast.LENGTH_SHORT).show();
+
+
+        Button mEmailSignInButton = (Button) findViewById(R.id.button_trocar);
+        mEmailSignInButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                openTrocaActivity();
+            }
+        });
+
+        ArrayList<Comentario> mensagens = adicionaMensagens();
+        ArrayAdapter adapter = new Adapter_comentario( this, adicionaMensagens());
+//        lv_mensagens
     }
-    
+  
     public void openTrocaActivity(Jogo jogo) {
         if (jogo != null) {
 //            LocalStorage.getInstance(this).addToStorage(LocalStorage.JOGO_CLICADO, jogo);

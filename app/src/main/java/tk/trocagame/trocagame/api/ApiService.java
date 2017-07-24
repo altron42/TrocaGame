@@ -4,10 +4,7 @@ import java.util.List;
 
 import retrofit2.Call;
 import retrofit2.http.Body;
-import retrofit2.http.Field;
-import retrofit2.http.FormUrlEncoded;
 import retrofit2.http.GET;
-import retrofit2.http.Header;
 import retrofit2.http.Headers;
 import retrofit2.http.POST;
 import tk.trocagame.trocagame.model.Console;
@@ -41,12 +38,23 @@ public interface ApiService {
     Call<ResultStatus> novoUsuario(@Body Usuario usuario);
 
     @Headers( "Content-Type: application/json" )
+    @POST("usuario/busca_usuario_por_id")
+    Call<List<Usuario>> buscaUsuarioPorId(@Body Usuario usuario);
+
+    @Headers( "Content-Type: application/json" )
     @POST("usuario/altera_usuario")
     Call<ResultStatus> updateUsuario(@Body Usuario usuario);
 //JOGO
     @Headers( "Content-Type: application/json" )
     @POST("jogo/busca_jogos_por_console")
     Call<List<Jogo>> buscaJogosConsole(@Body Console console);
+
+
+//    Chama a função que retorna Comentários por Jogo (Passa o Jogo e recebe
+//    uma lista de comentários
+    @Headers( "Content-Type: application/json" )
+    @POST("comentario/busca_comentario_por_id")
+    Call<List<Comentario>> buscaComentariosPorId(@Body Jogo jogo);
 
     @GET("jogo/busca_all_jogos")
     Call<List<Jogo>> buscaAllJogos();
