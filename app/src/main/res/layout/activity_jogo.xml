@@ -178,7 +178,7 @@
                 android:orientation="horizontal">
 
                 <Button
-                    android:id="@+id/button4"
+                    android:id="@+id/button_oferta"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_margin="@dimen/cardview_default_radius"
@@ -186,7 +186,7 @@
                     android:background="?android:attr/colorActivatedHighlight"
                     android:elevation="0dp"
                     android:foregroundTint="@color/cardview_shadow_start_color"
-                    android:text="Ofertar" />
+                    android:text="Ofertar"/>
 
                 <Button
                     android:id="@+id/button_trocar"

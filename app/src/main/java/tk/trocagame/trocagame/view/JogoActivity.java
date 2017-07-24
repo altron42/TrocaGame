@@ -4,7 +4,6 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.app.Activity;
 import android.view.View;
-import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.ListView;
@@ -60,8 +59,18 @@ public class JogoActivity extends Activity {
         lv_comentarios = (ListView) findViewById(R.id.lv_comentarios);
 
 
+        Button oferta = (Button) findViewById(R.id.button_oferta);
+        oferta.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                openOfertaActivity(jogo);
+            }
+        });
+
+
         Glide.with(this)
                 .load(jogo.getImageUri())
+                .placeholder(R.drawable.trocagame_progess_orange)
                 .into(capa_jogo);
 
 //        Toast.makeText(this, jogo.getDescricao(),Toast.LENGTH_SHORT).show();
@@ -79,49 +88,21 @@ public class JogoActivity extends Activity {
         ArrayAdapter adapter = new Adapter_comentario( this, adicionaMensagens());
 //        lv_mensagens
     }
-    private ArrayList<Comentario> adicionaMensagens() {
-//        jogo = LocalStorage.getInstance(this).getObject(LocalStorage.ACTIVE_USER, Usuario.class);
-//        mApiService = ApiUtils.getApiService();
-
-
-        ArrayList<Comentario> comentarios= new ArrayList<Comentario>(  );
-        Comentario comentario = new Comentario(1, 1, 180,5, "24-24-2017", "Foda esse Game");
-        comentarios.add( comentario );
-        comentario = new Comentario(2, 2, 180,2, "24-24-2017", "Foda esse Game2");
-        comentarios.add( comentario );
-
-        return comentarios;
-
-//        mApiService.buscaComentariosPorId(new Jogo(jogo.getId())).enqueue(new Callback<List<Comentario>>() {
-//            @Override
-//            public void onResponse(Call<List<Comentario>> call, Response<List<Comentario>> response) {
-//                if (response.isSuccessful()) {
-//
-//                    Log.i( TAG, "POST enviado para API. " + response.body() );
-//                    if (response.body().isEmpty()) {
-//                        Log.i( TAG, "Erro na busca do usuario do comentario" );
-//                    } else {
-//                        Usuario usuario = response.body().get( 0 );
-//                        nomeDonoMensagem.setText( usuario.getNome() );
-//                    }
-//                } else {
-//                    Log.e( TAG, "RESPONSE ERROR CODE: " + response.code() + response.raw() );
-//                }
-//            }
-//
-//            @Override
-//            public void onFailure(Call<List<Usuario>> call, Throwable t) {
-//                Log.e(TAG, "Ocorreu algum erro. " + t.getMessage());
-//            }
-//        });
-
-//        return null;
-    }
-
-    public void openTrocaActivity() {
+  
+    public void openTrocaActivity(Jogo jogo) {
         if (jogo != null) {
 //            LocalStorage.getInstance(this).addToStorage(LocalStorage.JOGO_CLICADO, jogo);
             Intent intent = new Intent(this,TrocaActivity.class);
+            this.startActivity(intent);
+        } else {
+            Toast.makeText(this,"Erro, objeto jogo = null",Toast.LENGTH_SHORT).show();
+        }
+    }
+
+    public void openOfertaActivity(Jogo jogo) {
+        if (jogo != null) {
+//            LocalStorage.getInstance(this).addToStorage(LocalStorage.JOGO_CLICADO, jogo);
+            Intent intent = new Intent(this,OfertaActivity.class);
             this.startActivity(intent);
         } else {
             Toast.makeText(this,"Erro, objeto jogo = null",Toast.LENGTH_SHORT).show();
