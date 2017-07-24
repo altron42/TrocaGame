@@ -51,8 +51,8 @@ public class JogoActivity extends Activity {
         distribuidor.setText(jogo.getDistribuidor());
 
 
-        Button oferta = (Button) findViewById(R.id.button_oferta);
-        oferta.setOnClickListener(new View.OnClickListener() {
+        Button btnOferta = (Button) findViewById(R.id.button_oferta);
+        btnOferta.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 openOfertaActivity(jogo);
@@ -66,8 +66,8 @@ public class JogoActivity extends Activity {
                 .into(capa_jogo);
 
 
-        Button mEmailSignInButton = (Button) findViewById(R.id.button_trocar);
-        mEmailSignInButton.setOnClickListener(new View.OnClickListener() {
+        Button btnTrocar = (Button) findViewById(R.id.button_trocar);
+        btnTrocar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 openTrocaActivity();
