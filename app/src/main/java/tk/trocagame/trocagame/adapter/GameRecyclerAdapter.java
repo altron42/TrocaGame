@@ -1,4 +1,4 @@
-package tk.trocagame.trocagame.utils;
+package tk.trocagame.trocagame.adapter;
 
 import android.content.Context;
 import android.content.Intent;
@@ -18,6 +18,7 @@ import java.util.List;
 
 import tk.trocagame.trocagame.R;
 import tk.trocagame.trocagame.model.Jogo;
+import tk.trocagame.trocagame.utils.LocalStorage;
 import tk.trocagame.trocagame.view.JogoActivity;
 
 /**

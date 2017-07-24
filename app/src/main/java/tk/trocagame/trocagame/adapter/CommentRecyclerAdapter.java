@@ -1,4 +1,4 @@
-package tk.trocagame.trocagame.utils;
+package tk.trocagame.trocagame.adapter;
 
 import android.content.Context;
 
@@ -65,8 +65,9 @@ public class CommentRecyclerAdapter extends RecyclerView.Adapter<CommentRecycler
         holder.userName.setText(comentario.getNome_usuario());
         holder.date.setText(comentario.getData());
         holder.message.setText(comentario.getMensagem());
+
         Glide.with(context)
-                .load(comentario.getFoto_uri())
+                .load(R.drawable.account)
                 .placeholder(R.drawable.trocagame_progess_orange)
                 .into(holder.userImage);
         holder.commentCard.setOnClickListener(new View.OnClickListener() {
@@ -74,7 +75,7 @@ public class CommentRecyclerAdapter extends RecyclerView.Adapter<CommentRecycler
             public void onClick(View v) {
                 Comentario comentario1 = mCommentList.get(position);
                 Toast.makeText(context, "Comentario clicado: " + comentario1.getId(),Toast.LENGTH_SHORT).show();
-                Log.i(TAG,"Jogo clicado: " + comentario1.getId() + "-" + comentario1.getId());
+                Log.i(TAG,"Jogo clicado: " + comentario1.getId() + "-" + comentario1.getMensagem());
             }
         });
     }

@@ -24,7 +24,7 @@ import tk.trocagame.trocagame.api.ApiService;
 import tk.trocagame.trocagame.api.ApiUtils;
 import tk.trocagame.trocagame.model.Console;
 import tk.trocagame.trocagame.model.Jogo;
-import tk.trocagame.trocagame.utils.GameRecyclerAdapter;
+import tk.trocagame.trocagame.adapter.GameRecyclerAdapter;
 
 /**
  * A simple {@link Fragment} subclass.
