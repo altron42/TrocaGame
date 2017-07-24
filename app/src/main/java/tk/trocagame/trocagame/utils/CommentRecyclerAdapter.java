@@ -65,8 +65,9 @@ public class CommentRecyclerAdapter extends RecyclerView.Adapter<CommentRecycler
         holder.userName.setText(comentario.getNome_usuario());
         holder.date.setText(comentario.getData());
         holder.message.setText(comentario.getMensagem());
+
         Glide.with(context)
-                .load(comentario.getFoto_uri())
+                .load(R.drawable.account)
                 .placeholder(R.drawable.trocagame_progess_orange)
                 .into(holder.userImage);
         holder.commentCard.setOnClickListener(new View.OnClickListener() {

@@ -20,6 +20,15 @@
             android:layout_height="wrap_content"
             android:orientation="vertical">
 
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/rv_jogo_comentario"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:layoutManager="android.support.v7.widget.LinearLayoutManager"
+                tools:context=".view.JogoActivity"
+                tools:listitem="@layout/card_comentario"
+                tools:orientation="vertical" />
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
@@ -192,15 +201,6 @@
                     android:foregroundTint="@color/cardview_shadow_start_color"
                     android:text="Trocar" />
             </LinearLayout>
-
-            <android.support.v7.widget.RecyclerView
-                android:id="@+id/rv_jogo_comentario"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                tools:orientation="vertical"
-                app:layoutManager="android.support.v7.widget.LinearLayoutManager"
-                tools:context=".view.JogoActivity"
-                tools:listitem="@layout/card_comentario" />
 
         </LinearLayout>
 

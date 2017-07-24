@@ -3,6 +3,10 @@ package tk.trocagame.trocagame.view;
 import android.content.Intent;
 import android.os.Bundle;
 import android.app.Activity;
+import android.support.v7.widget.DefaultItemAnimator;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -11,12 +15,23 @@ import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 import tk.trocagame.trocagame.R;
 import tk.trocagame.trocagame.api.ApiService;
+import tk.trocagame.trocagame.api.ApiUtils;
+import tk.trocagame.trocagame.model.Comentario;
 import tk.trocagame.trocagame.model.Jogo;
+import tk.trocagame.trocagame.utils.CommentRecyclerAdapter;
 import tk.trocagame.trocagame.utils.LocalStorage;
 
 public class JogoActivity extends Activity {
+
+    private static final String TAG = JogoActivity.class.getName();
 
     private Jogo jogo;
     private ImageView capa_jogo;
@@ -27,12 +42,19 @@ public class JogoActivity extends Activity {
     private TextView produtor;
     private TextView distribuidor;
 
+    private List<Comentario> mCommentList = new ArrayList<>();
+    private RecyclerView commentRecyclerView;
+    private CommentRecyclerAdapter cSetAdapter;
+
     private ApiService mApiService;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_jogo);
+
+        mApiService = ApiUtils.getApiService();
+
 
         jogo = LocalStorage.getInstance(this).getObject(LocalStorage.JOGO_CLICADO, Jogo.class);
 
@@ -73,6 +95,19 @@ public class JogoActivity extends Activity {
                 openTrocaActivity();
             }
         });
+
+        commentRecyclerView = (RecyclerView) findViewById(R.id.rv_jogo_comentario);
+
+        if (mCommentList.isEmpty()) {
+            buscaComentarios();
+        }
+
+        RecyclerView.LayoutManager mLayoutManager1 = new LinearLayoutManager(this);
+
+        commentRecyclerView.setHasFixedSize(true);
+        commentRecyclerView.setLayoutManager(mLayoutManager1);
+        commentRecyclerView.setItemAnimator(new DefaultItemAnimator());
+        commentRecyclerView.setAdapter(cSetAdapter);
     }
   
     public void openTrocaActivity() {
@@ -92,6 +127,34 @@ public class JogoActivity extends Activity {
             this.startActivity(intent);
         } else {
             Toast.makeText(this,"Erro, objeto jogo = null",Toast.LENGTH_SHORT).show();
+        }
+    }
+
+    private void buscaComentarios() {
+        mApiService.buscaComentariosPorId(jogo).enqueue(new Callback<List<Comentario>>() {
+            @Override
+            public void onResponse(Call<List<Comentario>> call, Response<List<Comentario>> response) {
+                if (response.isSuccessful()) {
+                    populateDataSet(response.body());
+                } else {
+                    Log.e(TAG, "RESPONSE ERROR CODE: " + response.code() + response.raw());
+                }
+            }
+
+            @Override
+            public void onFailure(Call<List<Comentario>> call, Throwable t) {
+
+            }
+        });
+    }
+
+    private void populateDataSet(List<Comentario> response) {
+        if (response.isEmpty()) {
+            Toast.makeText(this,"Nao ha comentarios",Toast.LENGTH_SHORT).show();
+        } else {
+            mCommentList.clear();
+            mCommentList.addAll(response);
+            cSetAdapter = new CommentRecyclerAdapter(mCommentList);
         }
     }
 }
