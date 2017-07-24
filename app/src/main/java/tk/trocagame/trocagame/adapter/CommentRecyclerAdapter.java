@@ -1,4 +1,4 @@
-package tk.trocagame.trocagame.utils;
+package tk.trocagame.trocagame.adapter;
 
 import android.content.Context;
 
@@ -75,7 +75,7 @@ public class CommentRecyclerAdapter extends RecyclerView.Adapter<CommentRecycler
             public void onClick(View v) {
                 Comentario comentario1 = mCommentList.get(position);
                 Toast.makeText(context, "Comentario clicado: " + comentario1.getId(),Toast.LENGTH_SHORT).show();
-                Log.i(TAG,"Jogo clicado: " + comentario1.getId() + "-" + comentario1.getId());
+                Log.i(TAG,"Jogo clicado: " + comentario1.getId() + "-" + comentario1.getMensagem());
             }
         });
     }
