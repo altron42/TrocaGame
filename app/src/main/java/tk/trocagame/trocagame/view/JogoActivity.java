@@ -102,6 +102,8 @@ public class JogoActivity extends Activity {
             buscaComentarios();
         }
 
+        cSetAdapter = new CommentRecyclerAdapter(mCommentList);
+        
         RecyclerView.LayoutManager mLayoutManager1 = new LinearLayoutManager(this);
 
         commentRecyclerView.setHasFixedSize(true);
@@ -154,7 +156,6 @@ public class JogoActivity extends Activity {
         } else {
             mCommentList.clear();
             mCommentList.addAll(response);
-            cSetAdapter = new CommentRecyclerAdapter(mCommentList);
         }
     }
 }
