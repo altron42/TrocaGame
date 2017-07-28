@@ -8,29 +8,21 @@ public class Oferta {
 
     private int id;
     private int id_jogo;
+    private String nome_jogo;
     private String estado_jogo;
     private String ano_compra;
     private int id_dono;
+    private String nome_usuario;
     private String data_cadastro_sistema;
 
-    public Oferta(){
-        this.id=0;
-        this.id_jogo=0;
-        this.estado_jogo=null;
-        this.ano_compra=null;
-        this.id_dono=0;
-        this.data_cadastro_sistema=null;
-
-    }
-
-    public Oferta(int id, int id_jogo, String estado_jogo, String ano_compra, int id_dono, String data_cadastro_sistema){
-        this.id=id;
-        this.id_jogo=id_jogo;
-        this.estado_jogo=estado_jogo;
-        this.ano_compra=ano_compra;
-        this.id_dono=id_dono;
-        this.data_cadastro_sistema=data_cadastro_sistema;
-
+    public Oferta(int id, int id_jogo, String nome_jogo, String estado_jogo, String ano_compra, int id_dono, String nome_usuario, String data_cadastro_sistema) {
+        this.id = id;
+        this.id_jogo = id_jogo;
+        this.estado_jogo = estado_jogo;
+        this.ano_compra = ano_compra;
+        this.id_dono = id_dono;
+        this.nome_usuario = nome_usuario;
+        this.data_cadastro_sistema = data_cadastro_sistema;
     }
 
     public int getId() {
@@ -47,6 +39,14 @@ public class Oferta {
 
     public void setId_jogo(int id_jogo) {
         this.id_jogo = id_jogo;
+    }
+
+    public String getNome_jogo() {
+        return nome_jogo;
+    }
+
+    public void setNome_jogo(String nome_jogo) {
+        this.nome_jogo = nome_jogo;
     }
 
     public String getEstado_jogo() {
@@ -73,11 +73,33 @@ public class Oferta {
         this.id_dono = id_dono;
     }
 
+    public String getNome_usuario() {
+        return nome_usuario;
+    }
+
+    public void setNome_usuario(String nome_usuario) {
+        this.nome_usuario = nome_usuario;
+    }
+
     public String getData_cadastro_sistema() {
         return data_cadastro_sistema;
     }
 
     public void setData_cadastro_sistema(String data_cadastro_sistema) {
         this.data_cadastro_sistema = data_cadastro_sistema;
+    }
+
+    @Override
+    public String toString() {
+        return "Oferta{" +
+                "id=" + id +
+                ", id_jogo=" + id_jogo +
+                ", nome_jogo='" + nome_jogo + '\'' +
+                ", estado_jogo='" + estado_jogo + '\'' +
+                ", ano_compra='" + ano_compra + '\'' +
+                ", id_dono=" + id_dono +
+                ", nome_usuario='" + nome_usuario + '\'' +
+                ", data_cadastro_sistema='" + data_cadastro_sistema + '\'' +
+                '}';
     }
 }
