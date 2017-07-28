@@ -104,7 +104,8 @@ public class JogoActivity extends Activity {
 
         cSetAdapter = new CommentRecyclerAdapter(mCommentList);
         
-        RecyclerView.LayoutManager mLayoutManager1 = new LinearLayoutManager(this);
+        RecyclerView.LayoutManager mLayoutManager1 = new LinearLayoutManager(this,
+                LinearLayoutManager.VERTICAL,true);
 
         commentRecyclerView.setHasFixedSize(true);
         commentRecyclerView.setLayoutManager(mLayoutManager1);
