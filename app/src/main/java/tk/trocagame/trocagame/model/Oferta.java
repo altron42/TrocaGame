@@ -6,47 +6,71 @@ package tk.trocagame.trocagame.model;
 
 public class Oferta {
 
-    private int id;
-    private int id_jogo;
-    private String nome_jogo;
+    private long id;
+    private long id_dono;
+    private String nome_usuario;
+    private String foto_uri;
+    private long id_jogo;
     private String estado_jogo;
     private String ano_compra;
-    private int id_dono;
-    private String nome_usuario;
     private String data_cadastro_sistema;
 
-    public Oferta(int id, int id_jogo, String nome_jogo, String estado_jogo, String ano_compra, int id_dono, String nome_usuario, String data_cadastro_sistema) {
+    public Oferta() {
+    }
+
+    public Oferta(long id_jogo) {
+        this.id_jogo = id_jogo;
+    }
+
+    public Oferta(long id, long id_dono, String nome_usuario, String foto_uri, long id_jogo, String estado_jogo, String ano_compra, String data_cadastro_sistema) {
         this.id = id;
+        this.id_dono = id_dono;
+        this.nome_usuario = nome_usuario;
+        this.foto_uri = foto_uri;
         this.id_jogo = id_jogo;
         this.estado_jogo = estado_jogo;
         this.ano_compra = ano_compra;
-        this.id_dono = id_dono;
-        this.nome_usuario = nome_usuario;
         this.data_cadastro_sistema = data_cadastro_sistema;
     }
 
-    public int getId() {
+    public long getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(long id) {
         this.id = id;
     }
 
-    public int getId_jogo() {
+    public long getId_dono() {
+        return id_dono;
+    }
+
+    public void setId_dono(long id_dono) {
+        this.id_dono = id_dono;
+    }
+
+    public String getNome_usuario() {
+        return nome_usuario;
+    }
+
+    public void setNome_usuario(String nome_usuario) {
+        this.nome_usuario = nome_usuario;
+    }
+
+    public String getFoto_uri() {
+        return foto_uri;
+    }
+
+    public void setFoto_uri(String foto_uri) {
+        this.foto_uri = foto_uri;
+    }
+
+    public long getId_jogo() {
         return id_jogo;
     }
 
-    public void setId_jogo(int id_jogo) {
+    public void setId_jogo(long id_jogo) {
         this.id_jogo = id_jogo;
-    }
-
-    public String getNome_jogo() {
-        return nome_jogo;
-    }
-
-    public void setNome_jogo(String nome_jogo) {
-        this.nome_jogo = nome_jogo;
     }
 
     public String getEstado_jogo() {
@@ -65,22 +89,6 @@ public class Oferta {
         this.ano_compra = ano_compra;
     }
 
-    public int getId_dono() {
-        return id_dono;
-    }
-
-    public void setId_dono(int id_dono) {
-        this.id_dono = id_dono;
-    }
-
-    public String getNome_usuario() {
-        return nome_usuario;
-    }
-
-    public void setNome_usuario(String nome_usuario) {
-        this.nome_usuario = nome_usuario;
-    }
-
     public String getData_cadastro_sistema() {
         return data_cadastro_sistema;
     }
@@ -93,12 +101,12 @@ public class Oferta {
     public String toString() {
         return "Oferta{" +
                 "id=" + id +
-                ", id_jogo=" + id_jogo +
-                ", nome_jogo='" + nome_jogo + '\'' +
-                ", estado_jogo='" + estado_jogo + '\'' +
-                ", ano_compra='" + ano_compra + '\'' +
                 ", id_dono=" + id_dono +
                 ", nome_usuario='" + nome_usuario + '\'' +
+                ", foto_uri='" + foto_uri + '\'' +
+                ", id_jogo=" + id_jogo +
+                ", estado_jogo='" + estado_jogo + '\'' +
+                ", ano_compra='" + ano_compra + '\'' +
                 ", data_cadastro_sistema='" + data_cadastro_sistema + '\'' +
                 '}';
     }

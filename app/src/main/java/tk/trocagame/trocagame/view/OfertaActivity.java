@@ -72,11 +72,8 @@ public class OfertaActivity extends Activity {
             }
         });
 
-
     }
 
-
-    @RequiresApi(api = Build.VERSION_CODES.N)
     public void enviaOferta(){
         // Set strDate to today's date formated as dd-MM-yyyy
         Calendar calendar = Calendar.getInstance();
@@ -89,13 +86,6 @@ public class OfertaActivity extends Activity {
         oferta.setAno_compra(ano_compra.getText().toString());
         oferta.setId_dono((int) usuario.getId());
         oferta.setData_cadastro_sistema(strDate);
-
-//        oferta.setId_jogo(180);
-//        oferta.setEstado_jogo("TA SHOVSKY");
-//        oferta.setAno_compra("2018");
-//        oferta.setId_dono(76);
-//        oferta.setData_cadastro_sistema("23-07-2017");
-
 
         Call<ResultStatus> call = mApiService.cadastraOferta(oferta);
         Toast.makeText(getApplicationContext(), "Oferta Cadastrada com Sucesso!!",Toast.LENGTH_SHORT).show();

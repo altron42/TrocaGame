@@ -64,4 +64,8 @@ public interface ApiService {
     @Headers( "Content-Type: application/json" )
     @POST("oferta/cadastra_oferta")
     Call<ResultStatus> cadastraOferta(@Body Oferta oferta);
+
+    @Headers( "Content-Type: application/json" )
+    @POST("oferta/busca_oferta_por_jogo")
+    Call<List<Oferta>> buscaOfertasJogo(@Body Oferta oferta);
 }

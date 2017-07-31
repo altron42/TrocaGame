@@ -157,6 +157,7 @@ public class JogoActivity extends Activity {
         } else {
             mCommentList.clear();
             mCommentList.addAll(response);
+            cSetAdapter.notifyDataSetChanged();
         }
     }
 }
