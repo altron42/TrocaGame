@@ -28,17 +28,16 @@
             android:orientation="horizontal">
 
             <LinearLayout
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_weight="0"
                 android:gravity="center_vertical"
+                android:layout_weight="0.75"
                 android:orientation="vertical" >
 
                 <TextView
                     android:id="@+id/tv_offer_username"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1"
                     android:text="TextView"
                     android:textSize="15sp"/>
 
@@ -47,18 +46,75 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="TextView"
-                    android:layout_weight="1"
                     android:textSize="12sp" />
 
             </LinearLayout>
 
-            <TextView
-                android:id="@+id/tv_comment_message"
+            <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="TextViewTextView"
-                android:textSize="14sp"/>
+                android:layout_height="match_parent"
+                android:gravity="center_vertical"
+                android:layout_weight="0.7"
+                android:orientation="vertical" >
+
+                <TextView
+                    android:id="@+id/tv_estado"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Estado" />
+
+                <TextView
+                    android:id="@+id/tv_estado_valor"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="TextView"
+                    android:textSize="15sp" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center_vertical"
+                android:layout_weight="0.8"
+                android:orientation="vertical" >
+
+                <TextView
+                    android:id="@+id/tv_ano_aquisicao"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Comprado" />
+
+                <TextView
+                    android:id="@+id/tv_ano_aquisicao_valor"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="TextView"
+                    android:textSize="12sp" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center_vertical"
+                android:layout_weight="0.8"
+                android:orientation="vertical" >
+
+                <TextView
+                    android:id="@+id/tv_data_oferta"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Ofertado" />
+
+                <TextView
+                    android:id="@+id/tv_data_oferta_valor"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="TextView"
+                    android:textSize="12sp" />
+
+            </LinearLayout>
 
         </LinearLayout>
 
