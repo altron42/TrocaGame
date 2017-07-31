@@ -39,14 +39,14 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="TextView"
-                    android:textSize="15sp"/>
+                    android:textSize="12sp"/>
 
                 <TextView
                     android:id="@+id/tv_offer_usercity"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="TextView"
-                    android:textSize="12sp" />
+                    android:textSize="10sp" />
 
             </LinearLayout>
 
@@ -61,6 +61,7 @@
                     android:id="@+id/tv_estado"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:textSize="10sp"
                     android:text="Estado" />
 
                 <TextView
