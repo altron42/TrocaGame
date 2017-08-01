@@ -41,6 +41,8 @@ public class RegisterActivity extends AppCompatActivity {
     private EditText mPasswordlView;
     private EditText mPassword2View;
     private EditText mBioView;
+    private EditText mCepView;
+    private EditText mCidadeView;
 
     private View mRegistrationFormView;
 
@@ -57,6 +59,8 @@ public class RegisterActivity extends AppCompatActivity {
         mPasswordlView = (EditText) findViewById(R.id.registration_password);
         mPassword2View = (EditText) findViewById(R.id.registration_password_2);
         mBioView = (EditText) findViewById(R.id.registration_bio);
+        mCepView  = (EditText) findViewById(R.id.registration_cepi);
+        mCidadeView = (EditText) findViewById(R.id.registration_cidade);
 
         mApiService = ApiUtils.getApiService();
 
@@ -86,6 +90,7 @@ public class RegisterActivity extends AppCompatActivity {
         mEmailView.setError(null);
         mPasswordlView.setError(null);
         mPassword2View.setError(null);
+        mNameView.setError(null);
 
         // Store values at the time of the submit attempt.
         String nome = mNameView.getText().toString();
@@ -94,6 +99,8 @@ public class RegisterActivity extends AppCompatActivity {
         String password = mPasswordlView.getText().toString();
         String password2 = mPassword2View.getText().toString();
         String bio = mBioView.getText().toString();
+        String cep = mCepView.getText().toString();
+        String cidade = mCidadeView.getText().toString();
 
         boolean cancel = false;
         View focusView = null;
@@ -129,11 +136,12 @@ public class RegisterActivity extends AppCompatActivity {
             mNameView.setError(getString(R.string.error_field_required));
             focusView = mNameView;
             cancel = true;
-        } else if (!isNameValid(nome)) {
-            mNameView.setError(getString(R.string.error_invalid_email));
-            focusView = mNameView;
-            cancel = true;
         }
+//        else if (!isNameValid(nome)) {
+//            mNameView.setError(getString(R.string.error_invalid_email));
+//            focusView = mNameView;
+//            cancel = true;
+//        }
 
         if (cancel) {
             // There was an error; don't attempt login and focus the first
@@ -143,7 +151,7 @@ public class RegisterActivity extends AppCompatActivity {
             // Show a progress spinner, and kick off a background task to
             // perform the user login attempt.
             // showProgress(true);
-            cadastraUsuario(new Usuario(0,email,nome,password,bio,strDate,phone));
+            cadastraUsuario(new Usuario(0,email,nome,password,bio,strDate,phone, cep, cidade));
         }
     }
 

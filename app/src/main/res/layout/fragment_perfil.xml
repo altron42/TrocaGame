@@ -19,8 +19,9 @@
         android:id="@+id/atualiza_form"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_centerVertical="true"
-        android:layout_centerHorizontal="true">
+        android:layout_below="@+id/imageView2"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="12dp">
 
         <LinearLayout
             android:id="@+id/email_login_form"
@@ -39,7 +40,9 @@
                     android:layout_weight="1"
                     android:ems="10"
                     android:inputType="textPersonName"
-                    android:text="Name" />
+                    android:hint="Aqui o Seu Nome" />
+
+                />
 
             </android.support.design.widget.TextInputLayout>
 
@@ -51,9 +54,10 @@
                     android:id="@+id/text_login"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:hint="@string/prompt_email"
                     android:inputType="textEmailAddress"
-                    android:maxLines="1" />
+                    android:maxLines="1"
+                    android:hint="Aqui o Seu Email" />
+                />
 
             </android.support.design.widget.TextInputLayout>
 
@@ -67,8 +71,9 @@
                     android:layout_height="match_parent"
                     android:layout_weight="1"
                     android:ems="10"
+                    android:hint="Uma descrição sobre você"
                     android:inputType="textPersonName"
-                    android:text="Name" />
+                    />
 
             </android.support.design.widget.TextInputLayout>
 
@@ -82,7 +87,9 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:ems="10"
-                    android:inputType="phone" />
+                    android:inputType="phone"
+                    android:hint="Digite aqui o seu telefone" />
+                />
             </android.support.design.widget.TextInputLayout>
 
             <android.support.design.widget.TextInputLayout
@@ -94,7 +101,37 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:ems="10"
-                    android:inputType="textPassword" />
+                    android:inputType="textPassword"
+                    android:hint="Digite a sua Senha" />
+                />
+            </android.support.design.widget.TextInputLayout>
+
+            <android.support.design.widget.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <EditText
+                    android:id="@+id/text_cep"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:ems="10"
+                    android:inputType="text"
+                    android:hint="@string/prompt_cep" />
+                />
+            </android.support.design.widget.TextInputLayout>
+
+            <android.support.design.widget.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <EditText
+                    android:id="@+id/text_cidade"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:ems="10"
+                    android:inputType="text"
+                    android:hint="Digite aqui sua cidade" />
+                />
             </android.support.design.widget.TextInputLayout>
 
             <Button
