@@ -43,6 +43,9 @@ public class PerfilFragment extends Fragment {
     private EditText mPhoneView;
     private EditText mPasswordlView;
     private EditText mBioView;
+    private EditText mCepView;
+    private EditText mCidadeView;
+
     private Usuario usuario;
 
 
@@ -79,6 +82,10 @@ public class PerfilFragment extends Fragment {
         mPhoneView.setText(usuario.getTelefone());
         mPasswordlView = (EditText) rootView.findViewById(R.id.text_password);
         mPasswordlView.setText(usuario.getSenha());
+        mCepView = (EditText) rootView.findViewById(R.id.text_cep);
+        mCepView.setText(usuario.getCep());
+        mCidadeView = (EditText) rootView.findViewById(R.id.text_cidade);
+        mCidadeView.setText(usuario.getCidade());
 
         Button mUpdateButton = (Button) rootView.findViewById(R.id.update_data_user_button);
         mUpdateButton.setOnClickListener(new View.OnClickListener() {
@@ -101,6 +108,8 @@ public class PerfilFragment extends Fragment {
     String phone = mPhoneView.getText().toString();
     String password = mPasswordlView.getText().toString();
     String bio = mBioView.getText().toString();
+    String cep = mCepView.getText().toString();
+    String cidade = mCidadeView.getText().toString();
 
 
     // Reset errors.
@@ -164,7 +173,7 @@ public class PerfilFragment extends Fragment {
             // Show a progress spinner, and kick off a background task to
             // perform the user login attempt.
             // showProgress(true);
-            cadastraUsuario(new Usuario(usuario.getId(),email,nome,password,bio,usuario.getData(),phone));
+            cadastraUsuario(new Usuario(usuario.getId(),email,nome,password,bio,usuario.getData(),phone, cep, cidade, ""));
         }
     }
 
