@@ -173,7 +173,7 @@ public class PerfilFragment extends Fragment {
             // Show a progress spinner, and kick off a background task to
             // perform the user login attempt.
             // showProgress(true);
-            cadastraUsuario(new Usuario(usuario.getId(),email,nome,password,bio,usuario.getData(),phone, cep, cidade));
+            cadastraUsuario(new Usuario(usuario.getId(),email,nome,password,bio,usuario.getData(),phone, cep, cidade, ""));
         }
     }
 

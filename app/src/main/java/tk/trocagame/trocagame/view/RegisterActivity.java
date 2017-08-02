@@ -151,7 +151,7 @@ public class RegisterActivity extends AppCompatActivity {
             // Show a progress spinner, and kick off a background task to
             // perform the user login attempt.
             // showProgress(true);
-            cadastraUsuario(new Usuario(0,email,nome,password,bio,strDate,phone, cep, cidade));
+            cadastraUsuario(new Usuario(0,email,nome,password,bio,strDate,phone, cep, cidade,""));
         }
     }
 
