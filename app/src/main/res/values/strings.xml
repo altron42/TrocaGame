@@ -8,6 +8,9 @@
     <string name="prompt_name">Seu nome</string>
     <string name="prompt_bio">Escreva algo sobre você</string>
     <string name="prompt_phone">Seu telefone com DDD</string>
+    <string name="prompt_cep">Digite seu Cep</string>
+    <string name="prompt_cidade">Qual a sua cidade?</string>
+
     <string name="action_sign_in">Entrar</string>
     <string name="box_remember_me">Lembrar de mim</string>
     <string name="action_register">Cadastrar-se</string>
