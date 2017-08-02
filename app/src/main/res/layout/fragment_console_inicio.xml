@@ -59,7 +59,7 @@
                 android:layout_margin="@dimen/card_console_game_horizontal_margin"
                 android:textSize="@dimen/tv_list_label_size"
                 android:textColor="@color/colorWhite"
-                android:text="Recomandaçoes" />
+                android:text="Recomendaçoes" />
 
             <android.support.v7.widget.RecyclerView
                 android:id="@+id/rv_console_inicio_3"
